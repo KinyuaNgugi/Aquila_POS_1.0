@@ -1,0 +1,1544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - pos@localhost" uuid="cbf0313e-ea33-4db8-acfb-23e9d006dd7f">
+    <database-info product="MySQL" version="5.7.13-0ubuntu0.16.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="pos"/>
+      <table id="2" parent="1" name="account"/>
+      <table id="3" parent="1" name="cashPayment"/>
+      <table id="4" parent="1" name="chequePayment"/>
+      <table id="5" parent="1" name="createProdLog"/>
+      <table id="6" parent="1" name="employee"/>
+      <table id="7" parent="1" name="employeeSalary"/>
+      <table id="8" parent="1" name="invoice"/>
+      <table id="9" parent="1" name="negativeAdjustments"/>
+      <table id="10" parent="1" name="pettyCashPayment"/>
+      <table id="11" parent="1" name="purchase"/>
+      <table id="12" parent="1" name="runDateTable"/>
+      <table id="13" parent="1" name="sale"/>
+      <table id="14" parent="1" name="stock"/>
+      <table id="15" parent="1" name="stockeden"/>
+      <table id="16" parent="1" name="supplier"/>
+      <table id="17" parent="1" name="supplierLog"/>
+      <table id="18" parent="1" name="till"/>
+      <table id="19" parent="1" name="user"/>
+      <table id="20" parent="1" name="migration"/>
+      <table id="21" parent="1" name="person"/>
+      <table id="22" parent="1" name="receipt"/>
+      <column id="23" parent="2" name="accountId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="24" parent="2" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="25" parent="2" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="26" parent="2" name="PRIMARY">
+        <columns>accountId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="27" parent="3" name="cashPaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="28" parent="3" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="29" parent="3" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="30" parent="3" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="31" parent="3" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="32" parent="3" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="33" parent="3" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="34" parent="3" name="zedClear">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="35" parent="3" name="PRIMARY">
+        <columns>cashPaymentId
+cashPaymentId
+cashPaymentId
+cashPaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="36" parent="4" name="chequePaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="37" parent="4" name="dateOfIssue">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="38" parent="4" name="payee">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="39" parent="4" name="dateDue">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="40" parent="4" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="41" parent="4" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="42" parent="4" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="43" parent="4" name="chequeNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="44" parent="4" name="paid">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="45" parent="4" name="PRIMARY">
+        <columns>chequePaymentId
+chequePaymentId
+chequePaymentId
+chequePaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="46" parent="5" name="cLogId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="47" parent="5" name="dateCreated">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="48" parent="5" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="49" parent="5" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="50" parent="5" name="type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="51" parent="5" name="PRIMARY">
+        <columns>cLogId
+cLogId
+cLogId
+cLogId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="52" parent="6" name="employeeNatId">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="53" parent="6" name="employeeFirstName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="54" parent="6" name="phoneNumber">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="55" parent="6" name="EmployeeMiddleName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="56" parent="6" name="EmployeeLastName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="57" parent="6" name="employeeWorkingStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="58" parent="6" name="employeeId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="59" parent="6" name="currentSalary">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <key id="60" parent="6" name="PRIMARY">
+        <columns>employeeId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="61" parent="7" name="salaryId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="62" parent="7" name="monthOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="63" parent="7" name="yearOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="64" parent="7" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="65" parent="7" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="66" parent="7" name="employeeId">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="67" parent="7" name="PRIMARY">
+        <columns>salaryId
+salaryId
+salaryId
+salaryId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="68" parent="8" name="chequePaymentId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="69" parent="8" name="invoiceId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="70" parent="8" name="dateOfReceipt">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="71" parent="8" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="72" parent="8" name="invoiceAmount">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="73" parent="8" name="PRIMARY">
+        <columns>invoiceId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="74" parent="9" name="adjNumber">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="75" parent="9" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="76" parent="9" name="unitsToRemove">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="77" parent="9" name="dateOfAdjustment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="78" parent="9" name="category">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="79" parent="9" name="PRIMARY">
+        <columns>adjNumber
+adjNumber
+adjNumber
+adjNumber</columns>
+        <primary>1</primary>
+      </key>
+      <column id="80" parent="10" name="pettyCashPaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="81" parent="10" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="82" parent="10" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="83" parent="10" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="84" parent="10" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="85" parent="10" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="86" parent="10" name="payee">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="87" parent="10" name="zedClear">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="88" parent="10" name="PRIMARY">
+        <columns>pettyCashPaymentId
+pettyCashPaymentId
+pettyCashPaymentId
+pettyCashPaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="89" parent="11" name="purchaseId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="90" parent="11" name="unitsReceived">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="91" parent="11" name="dateReceived">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="92" parent="11" name="buyingPricePerUnit">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="93" parent="11" name="total">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="94" parent="11" name="invoiceId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="95" parent="11" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="96" parent="11" name="stockId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="97" parent="11" name="sellingPrice">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="98" parent="11" name="PRIMARY">
+        <columns>purchaseId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="99" parent="12" name="runDateId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="100" parent="12" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="101" parent="12" name="sales">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="102" parent="12" name="cashPayments">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="103" parent="12" name="pettyCashPayments">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="104" parent="12" name="activeStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="105" parent="12" name="manualCashEntry">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="106" parent="12" name="customerCount">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="107" parent="12" name="vatableTotals">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="108" parent="12" name="unvatableTotals">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="109" parent="12" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="110" parent="12" name="profits">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="111" parent="12" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="112" parent="12" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="113" parent="12" name="credit_sales">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="114" parent="12" name="PRIMARY">
+        <columns>runDateId
+runDateId
+runDateId
+runDateId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="115" parent="13" name="saleId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="116" parent="13" name="unitsSold">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="117" parent="13" name="receiptNumber">
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="118" parent="13" name="dateOfSale">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="119" parent="13" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="120" parent="13" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="121" parent="13" name="stockId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="122" parent="13" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="123" parent="13" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="124" parent="13" name="profit">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="125" parent="13" name="pricePerUnit">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="126" parent="13" name="PRIMARY">
+        <columns>saleId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="127" parent="14" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="128" parent="14" name="actualMargin">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="129" parent="14" name="buyingPricePerUnit">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="130" parent="14" name="margin">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="131" parent="14" name="marginOrPercent">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="132" parent="14" name="packing">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="133" parent="14" name="productCode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="134" parent="14" name="productName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="135" parent="14" name="reorderLevel">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="136" parent="14" name="sellingPricePerUnit">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="137" parent="14" name="supplierId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="138" parent="14" name="unitsInStock">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="139" parent="14" name="vatAmount">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="140" parent="14" name="vatable">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="141" parent="14" name="stock_productCode_uindex">
+        <columns>productCode</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="142" parent="14" name="stock_productName_uindex">
+        <columns>productName</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="143" parent="14" name="PRIMARY">
+        <columns>stockId</columns>
+        <primary>1</primary>
+      </key>
+      <key id="144" parent="14" name="stock_productCode_uindex">
+        <columns>productCode</columns>
+        <underlying-index>stock_productCode_uindex</underlying-index>
+      </key>
+      <key id="145" parent="14" name="stock_productName_uindex">
+        <columns>productName</columns>
+        <underlying-index>stock_productName_uindex</underlying-index>
+      </key>
+      <column id="146" parent="15" name="scancode">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="147" parent="15" name="descr">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="148" parent="15" name="vat">
+        <data-type>varchar(6)</data-type>
+      </column>
+      <column id="149" parent="15" name="price">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="150" parent="15" name="stockedenId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <key id="151" parent="15" name="PRIMARY">
+        <columns>stockedenId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="152" parent="16" name="supplierName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="153" parent="16" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="154" parent="16" name="vatNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="155" parent="16" name="kraPin">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="156" parent="16" name="phoneNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="157" parent="16" name="methodOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="158" parent="16" name="PRIMARY">
+        <columns>supplierId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="159" parent="17" name="eLogId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="160" parent="17" name="dateOfEdit">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="161" parent="17" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="162" parent="17" name="supplierId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="163" parent="17" name="type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="164" parent="17" name="PRIMARY">
+        <columns>eLogId
+eLogId
+eLogId
+eLogId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="165" parent="18" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="166" parent="18" name="address">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="167" parent="18" name="PRIMARY">
+        <columns>tillId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="168" parent="19" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="169" parent="19" name="userName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="170" parent="19" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="171" parent="19" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="172" parent="19" name="employeeId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="173" parent="19" name="CreateEditProduct">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="174" parent="19" name="manageStock">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="175" parent="19" name="createEditSupplier">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="176" parent="19" name="createEditUserAndRights">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="177" parent="19" name="createEditPayDeleteEmployee">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="178" parent="19" name="enterGoodsReceived">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="179" parent="19" name="adjustStock">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="180" parent="19" name="viewPurchaseSaleReports">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="181" parent="19" name="enterCheque">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="182" parent="19" name="viewChequeCashPayments">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="183" parent="19" name="directSales">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="184" parent="19" name="viewPosSidePayments">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="185" parent="19" name="viewPosSideReceipts">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="186" parent="19" name="reprintReceipt">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="187" parent="19" name="viewDailySales">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="188" parent="19" name="operationStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <key id="189" parent="19" name="PRIMARY">
+        <columns>userId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="190" parent="20" name="version">
+        <mandatory>1</mandatory>
+        <data-type>varchar(180)</data-type>
+      </column>
+      <column id="191" parent="20" name="apply_time">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="192" parent="20" name="PRIMARY">
+        <columns>version</columns>
+        <primary>1</primary>
+      </key>
+      <column id="193" parent="21" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="194" parent="21" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="195" parent="21" name="place">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="196" parent="21" name="city">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="197" parent="21" name="state">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="198" parent="21" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="199" parent="21" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="200" parent="22" name="rid">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="201" parent="22" name="receiptNumber">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="202" parent="22" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="203" parent="22" name="actualDate">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="204" parent="22" name="receiptTotal">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="205" parent="22" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="206" parent="22" name="credit_status">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+        <default-expression>&apos;NO CREDIT&apos;</default-expression>
+      </column>
+      <key id="207" parent="22" name="PRIMARY">
+        <columns>rid</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+  <data-source name="MySQL - pos1@localhost" uuid="4695c5ec-8da9-4bfc-a38b-540578fff3b0">
+    <database-info product="MySQL" version="5.7.13-0ubuntu0.16.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="pos1"/>
+      <table id="2" parent="1" name="account"/>
+      <table id="3" parent="1" name="employee"/>
+      <table id="4" parent="1" name="invoice"/>
+      <table id="5" parent="1" name="person"/>
+      <table id="6" parent="1" name="purchase"/>
+      <table id="7" parent="1" name="receipt"/>
+      <table id="8" parent="1" name="sale"/>
+      <table id="9" parent="1" name="stock"/>
+      <table id="10" parent="1" name="stockeden"/>
+      <table id="11" parent="1" name="supplier"/>
+      <table id="12" parent="1" name="till"/>
+      <table id="13" parent="1" name="user"/>
+      <table id="14" parent="1" name="cashPayment"/>
+      <table id="15" parent="1" name="chequePayment"/>
+      <table id="16" parent="1" name="createProdLog"/>
+      <table id="17" parent="1" name="employeeSalary"/>
+      <table id="18" parent="1" name="migration"/>
+      <table id="19" parent="1" name="negativeAdjustments"/>
+      <table id="20" parent="1" name="pettyCashPayment"/>
+      <table id="21" parent="1" name="runDateTable"/>
+      <table id="22" parent="1" name="supplierLog"/>
+      <column id="23" parent="2" name="accountId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="24" parent="2" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="25" parent="2" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="26" parent="2" name="PRIMARY">
+        <columns>accountId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="27" parent="3" name="employeeNatId">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="28" parent="3" name="employeeFirstName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="29" parent="3" name="phoneNumber">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="30" parent="3" name="EmployeeMiddleName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="31" parent="3" name="EmployeeLastName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="32" parent="3" name="employeeWorkingStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="33" parent="3" name="employeeId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="34" parent="3" name="currentSalary">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <key id="35" parent="3" name="PRIMARY">
+        <columns>employeeId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="36" parent="4" name="chequePaymentId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="37" parent="4" name="invoiceId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="38" parent="4" name="dateOfReceipt">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="39" parent="4" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="40" parent="4" name="invoiceAmount">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="41" parent="4" name="PRIMARY">
+        <columns>invoiceId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="42" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="43" parent="5" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="44" parent="5" name="place">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="45" parent="5" name="city">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="46" parent="5" name="state">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <column id="47" parent="5" name="phone">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)</data-type>
+      </column>
+      <key id="48" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="49" parent="6" name="purchaseId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="50" parent="6" name="unitsReceived">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="51" parent="6" name="dateReceived">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="52" parent="6" name="buyingPricePerUnit">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="53" parent="6" name="total">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="54" parent="6" name="invoiceId">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="55" parent="6" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="56" parent="6" name="stockId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="57" parent="6" name="sellingPrice">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="58" parent="6" name="PRIMARY">
+        <columns>purchaseId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="59" parent="7" name="rid">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="60" parent="7" name="receiptNumber">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="61" parent="7" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="62" parent="7" name="actualDate">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="63" parent="7" name="receiptTotal">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="64" parent="7" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="65" parent="7" name="credit_status">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)</data-type>
+        <default-expression>&apos;NO CREDIT&apos;</default-expression>
+      </column>
+      <key id="66" parent="7" name="PRIMARY">
+        <columns>rid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="67" parent="8" name="saleId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="68" parent="8" name="unitsSold">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="69" parent="8" name="receiptNumber">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="70" parent="8" name="dateOfSale">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="71" parent="8" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="72" parent="8" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="73" parent="8" name="stockId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="74" parent="8" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="75" parent="8" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <column id="76" parent="8" name="profit">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="77" parent="8" name="pricePerUnit">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="78" parent="8" name="PRIMARY">
+        <columns>saleId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="79" parent="9" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="80" parent="9" name="actualMargin">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="81" parent="9" name="buyingPricePerUnit">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="82" parent="9" name="margin">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="83" parent="9" name="marginOrPercent">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="84" parent="9" name="packing">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="85" parent="9" name="productCode">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="86" parent="9" name="productName">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="87" parent="9" name="reorderLevel">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="88" parent="9" name="sellingPricePerUnit">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="89" parent="9" name="supplierId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="90" parent="9" name="unitsInStock">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="91" parent="9" name="vatAmount">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="92" parent="9" name="vatable">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="93" parent="9" name="stock_productCode_uindex">
+        <columns>productCode</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="94" parent="9" name="PRIMARY">
+        <columns>stockId</columns>
+        <primary>1</primary>
+      </key>
+      <key id="95" parent="9" name="stock_productCode_uindex">
+        <columns>productCode</columns>
+        <underlying-index>stock_productCode_uindex</underlying-index>
+      </key>
+      <column id="96" parent="10" name="scancode">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="97" parent="10" name="descr">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="98" parent="10" name="vat">
+        <data-type>varchar(6)</data-type>
+      </column>
+      <column id="99" parent="10" name="price">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="100" parent="10" name="stockedenId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <key id="101" parent="10" name="PRIMARY">
+        <columns>stockedenId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="102" parent="11" name="supplierName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="103" parent="11" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="104" parent="11" name="vatNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="105" parent="11" name="kraPin">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="106" parent="11" name="phoneNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="107" parent="11" name="methodOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="108" parent="11" name="PRIMARY">
+        <columns>supplierId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="109" parent="12" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="110" parent="12" name="address">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="111" parent="12" name="PRIMARY">
+        <columns>tillId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="112" parent="13" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="113" parent="13" name="userName">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="114" parent="13" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="115" parent="13" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="116" parent="13" name="employeeId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="117" parent="13" name="CreateEditProduct">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="118" parent="13" name="manageStock">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="119" parent="13" name="createEditSupplier">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="120" parent="13" name="createEditUserAndRights">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="121" parent="13" name="createEditPayDeleteEmployee">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="122" parent="13" name="enterGoodsReceived">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="123" parent="13" name="adjustStock">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="124" parent="13" name="viewPurchaseSaleReports">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="125" parent="13" name="enterCheque">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="126" parent="13" name="viewChequeCashPayments">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="127" parent="13" name="directSales">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="128" parent="13" name="viewPosSidePayments">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="129" parent="13" name="viewPosSideReceipts">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="130" parent="13" name="reprintReceipt">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="131" parent="13" name="viewDailySales">
+        <data-type>tinyint(4)</data-type>
+      </column>
+      <column id="132" parent="13" name="operationStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+      </column>
+      <key id="133" parent="13" name="PRIMARY">
+        <columns>userId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="134" parent="14" name="cashPaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="135" parent="14" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="136" parent="14" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="137" parent="14" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="138" parent="14" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="139" parent="14" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="140" parent="14" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="141" parent="14" name="zedClear">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="142" parent="14" name="PRIMARY">
+        <columns>cashPaymentId
+cashPaymentId
+cashPaymentId
+cashPaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="143" parent="15" name="chequePaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="144" parent="15" name="dateOfIssue">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="145" parent="15" name="payee">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="146" parent="15" name="dateDue">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="147" parent="15" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="148" parent="15" name="supplierId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="149" parent="15" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="150" parent="15" name="chequeNumber">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="151" parent="15" name="paid">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="152" parent="15" name="PRIMARY">
+        <columns>chequePaymentId
+chequePaymentId
+chequePaymentId
+chequePaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="153" parent="16" name="cLogId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="154" parent="16" name="dateCreated">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="155" parent="16" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="156" parent="16" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="157" parent="16" name="type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="158" parent="16" name="PRIMARY">
+        <columns>cLogId
+cLogId
+cLogId
+cLogId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="159" parent="17" name="salaryId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="160" parent="17" name="monthOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="161" parent="17" name="yearOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="162" parent="17" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="163" parent="17" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+      </column>
+      <column id="164" parent="17" name="employeeId">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="165" parent="17" name="PRIMARY">
+        <columns>salaryId
+salaryId
+salaryId
+salaryId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="166" parent="18" name="version">
+        <mandatory>1</mandatory>
+        <data-type>varchar(180)</data-type>
+      </column>
+      <column id="167" parent="18" name="apply_time">
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="168" parent="18" name="PRIMARY">
+        <columns>version</columns>
+        <primary>1</primary>
+      </key>
+      <column id="169" parent="19" name="adjNumber">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="170" parent="19" name="stockId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="171" parent="19" name="unitsToRemove">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="172" parent="19" name="dateOfAdjustment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="173" parent="19" name="category">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <key id="174" parent="19" name="PRIMARY">
+        <columns>adjNumber
+adjNumber
+adjNumber
+adjNumber</columns>
+        <primary>1</primary>
+      </key>
+      <column id="175" parent="20" name="pettyCashPaymentId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="176" parent="20" name="amountPaid">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="177" parent="20" name="dateOfPayment">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="178" parent="20" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="179" parent="20" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="180" parent="20" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="181" parent="20" name="payee">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="182" parent="20" name="zedClear">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="183" parent="20" name="PRIMARY">
+        <columns>pettyCashPaymentId
+pettyCashPaymentId
+pettyCashPaymentId
+pettyCashPaymentId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="184" parent="21" name="runDateId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="185" parent="21" name="runDate">
+        <mandatory>1</mandatory>
+        <data-type>date</data-type>
+      </column>
+      <column id="186" parent="21" name="sales">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="187" parent="21" name="cashPayments">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="188" parent="21" name="pettyCashPayments">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="189" parent="21" name="activeStatus">
+        <mandatory>1</mandatory>
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="190" parent="21" name="manualCashEntry">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="191" parent="21" name="customerCount">
+        <data-type>int(11)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="192" parent="21" name="vatableTotals">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="193" parent="21" name="unvatableTotals">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="194" parent="21" name="zedClear">
+        <data-type>tinyint(1)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="195" parent="21" name="profits">
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="196" parent="21" name="tillId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="197" parent="21" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="198" parent="21" name="credit_sales">
+        <mandatory>1</mandatory>
+        <data-type>decimal(10)</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="199" parent="21" name="PRIMARY">
+        <columns>runDateId
+runDateId
+runDateId
+runDateId</columns>
+        <primary>1</primary>
+      </key>
+      <column id="200" parent="22" name="eLogId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="201" parent="22" name="dateOfEdit">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="202" parent="22" name="userId">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="203" parent="22" name="supplierId">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="204" parent="22" name="type">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <key id="205" parent="22" name="PRIMARY">
+        <columns>eLogId
+eLogId
+eLogId
+eLogId</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
