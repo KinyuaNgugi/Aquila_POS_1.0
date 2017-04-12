@@ -13,6 +13,7 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.LinkedList;
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 public class PrintZed extends JComponent implements Printable {
 
@@ -67,7 +68,7 @@ public class PrintZed extends JComponent implements Printable {
         text.append("\tTIME:" + new java.util.Date().toLocaleString() + "\n");
         text.append("\tRUN DATE:"+runDateActual+"\n");
         text.append("----------------------------------------------------------------------------------------------------\n");
-        text.append("\tZED FIGURES FOR TILL 1\n");
+        text.append("\tZED FIGURES FOR TILL "+TILL_ID+"\n");
         text.append("\n=========================================\n");
         text.append("\t**********Computer Analysis*********\n");
         text.append("----------------------------------------------------------------------------------------------------\n");

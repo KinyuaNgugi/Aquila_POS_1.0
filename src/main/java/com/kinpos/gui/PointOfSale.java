@@ -28,6 +28,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.PatternSyntaxException;
 
+import static com.kinpos.gui.resources.Constants.DB_HOST_ADDRESS;
+import static com.kinpos.gui.resources.Constants.DB_USER;
+import static com.kinpos.gui.resources.Constants.DB_PASSWORD;
+import static com.kinpos.gui.resources.Constants.TILL_ID;
+
 @SuppressWarnings("fallthrough")
 public class PointOfSale extends JFrame {
     public final StockDAO product = new HibernateStockDAO();
@@ -72,12 +77,10 @@ public class PointOfSale extends JFrame {
             totalLabel = new JLabel();
 
             //get run date
-            List<RunDateTableEntity> runDates = runDateService.getAllMyRunDates();
+            List<RunDateTableEntity> runDates = runDateService.getMyActiveRunDate();
             for (RunDateTableEntity runDate : runDates) {
-                if (runDate.getActiveStatus()) {
-                    runDateActual = runDate.getRunDate();
-                    runDateId = runDate.getRunDateId();
-                }
+                runDateActual = runDate.getRunDate();
+                runDateId = runDate.getRunDateId();
             }
 
             //populating supplier list
@@ -309,9 +312,9 @@ public class PointOfSale extends JFrame {
                     try {
                         final JFrame f=new JFrame("Product Search");
                         // database URL, username and password
-                        String DATABASE_URL = "jdbc:mysql://localhost/pos";
-                        String USERNAME = "root";
-                        String PASSWORD = "paradise";
+                        String DATABASE_URL = DB_HOST_ADDRESS;
+                        String USERNAME = DB_USER;
+                        String PASSWORD = DB_PASSWORD;
                         // default query retrieves all data from stock table
                         String DEFAULT_QUERY = "SELECT productCode,productName,sellingPricePerUnit,unitsInstock,stockId,buyingPricePerUnit from stock";
                         final ResultSetTableModel tableModel;
@@ -569,7 +572,7 @@ public class PointOfSale extends JFrame {
                                         saleEntity.setStockId(productCodes.get(i));
                                         Random random = new Random();
                                         saleEntity.setSaleId(random.nextInt());
-                                        saleEntity.setTillId(01);
+                                        saleEntity.setTillId(TILL_ID);
                                         saleEntity.setUserId(userEntity.getUserId());
                                         saleEntity.setZedClear(false);
                                         saleEntity.setProfit(profits.get(i));
@@ -615,6 +618,7 @@ public class PointOfSale extends JFrame {
                                     receiptEntity.setReceiptTotal(newTotal);
                                     receiptEntity.setZedClear(false);
                                     receiptEntity.setCreditStatus("NO CREDIT");
+                                    receiptEntity.setTillId(TILL_ID);
                                     Random r=new Random();
                                     receiptEntity.setRid(r.nextInt());
 
@@ -738,7 +742,7 @@ public class PointOfSale extends JFrame {
                             //save to cash payment
                             try{
                                 CashPaymentEntity cashInsert=new CashPaymentEntity();
-                                cashInsert.setTillId(1);
+                                cashInsert.setTillId(TILL_ID);
                                 cashInsert.setUserId(userEntity.getUserId());
                                 cashInsert.setZedClear(false);
                                 cashInsert.setRunDate(runDateActual);
@@ -798,7 +802,7 @@ public class PointOfSale extends JFrame {
                             //save to petty cash payment
                             try{
                                 PettyCashPaymentEntity cashInsert = new PettyCashPaymentEntity();
-                                cashInsert.setTillId(1);
+                                cashInsert.setTillId(TILL_ID);
                                 cashInsert.setUserId(userEntity.getUserId());
                                 cashInsert.setZedClear(false);
                                 cashInsert.setRunDate(runDateActual);
@@ -954,7 +958,7 @@ public class PointOfSale extends JFrame {
                                     saleEntity.setStockId(productCodes.get(i));
                                     Random random = new Random();
                                     saleEntity.setSaleId(random.nextInt());
-                                    saleEntity.setTillId(01);
+                                    saleEntity.setTillId(TILL_ID);
                                     saleEntity.setUserId(userEntity.getUserId());
                                     saleEntity.setZedClear(false);
                                     saleEntity.setProfit(profits.get(i));
@@ -1000,6 +1004,7 @@ public class PointOfSale extends JFrame {
                                 receiptEntity.setReceiptTotal(newTotal);
                                 receiptEntity.setZedClear(false);
                                 receiptEntity.setCreditStatus("CREDIT");
+                                receiptEntity.setTillId(TILL_ID);
                                 Random r=new Random();
                                 receiptEntity.setRid(r.nextInt());
 

@@ -10,6 +10,8 @@ import java.util.List;
 public interface CashPaymentDAO {
     List<CashPaymentEntity> getAllMyCashPayments();
 
+    List<CashPaymentEntity> getTillCashPayments();
+
     CashPaymentEntity getMyCashPayment(Integer myCashPaymentEntityId);
 
     CashPaymentEntity saveMyCashPayment(CashPaymentEntity cashPaymentEntity);

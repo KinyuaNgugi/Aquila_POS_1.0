@@ -26,9 +26,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 public class FrontEndHome extends JFrame {
     public final AccountDAO accountService=new HibernateAccountDAO();
@@ -54,16 +55,15 @@ public class FrontEndHome extends JFrame {
     public FrontEndHome(final UserEntity user1) {
         final JFrame frame = new JFrame("Aquila 1.0");
         //get run date
-        List<RunDateTableEntity> runDates = runDateService.getAllMyRunDates();
-        for (RunDateTableEntity runDate : runDates) {
-            if (runDate.getActiveStatus()) {
-                runDateActual = runDate.getRunDate();
-                runDateId = runDate.getRunDateId();
-                salesG=runDate.getSales();
-                pettyPayments=runDate.getPettyCashPayments();
-                cashPayments=runDate.getCashPayments();
-                customerCount=runDate.getCustomerCount();
-            }
+        List<RunDateTableEntity> runDates = runDateService.getMyActiveRunDate();
+        for (RunDateTableEntity runDate : runDates)
+        {
+            runDateActual = runDate.getRunDate();
+            runDateId = runDate.getRunDateId();
+            salesG=runDate.getSales();
+            pettyPayments=runDate.getPettyCashPayments();
+            cashPayments=runDate.getCashPayments();
+            customerCount=runDate.getCustomerCount();
         }
         userEntity=user1;
         //get all users
@@ -245,35 +245,33 @@ public class FrontEndHome extends JFrame {
                                 //update the zed clear in cash payments
                                 Integer amount, uId, tId, sId;
                                 Date rDate, dateOfPayment;
-                                List<CashPaymentEntity> paymentEntities = cashPaymentService.getAllMyCashPayments();
-                                for (CashPaymentEntity cash : paymentEntities) {
-                                    if (!cash.getZedClear()) {
-                                        CashPaymentEntity replace = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
-                                        amount = replace.getAmountPaid();
-                                        uId = replace.getUserId();
-                                        tId = replace.getTillId();
-                                        sId = replace.getSupplierId();
-                                        rDate = replace.getRunDate();
-                                        dateOfPayment = replace.getDateOfPayment();
+                                List<CashPaymentEntity> paymentEntities = cashPaymentService.getTillCashPayments();
+                                for (CashPaymentEntity cash : paymentEntities)
+                                {
+                                    CashPaymentEntity replace = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
+                                    amount = replace.getAmountPaid();
+                                    uId = replace.getUserId();
+                                    tId = replace.getTillId();
+                                    sId = replace.getSupplierId();
+                                    rDate = replace.getRunDate();
+                                    dateOfPayment = replace.getDateOfPayment();
 
-                                        //save temporary values
-                                        SupplierEntity supplierEntity=supplierService.getMySupplier(sId);
-                                        supplierNamesTemp.add(supplierEntity.getSupplierName());
-                                        cashAmountsPaidTemp.add(amount);
+                                    //save temporary values
+                                    SupplierEntity supplierEntity=supplierService.getMySupplier(sId);
+                                    supplierNamesTemp.add(supplierEntity.getSupplierName());
+                                    cashAmountsPaidTemp.add(amount);
 
-                                        CashPaymentEntity replacee = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
-                                        replacee.setAmountPaid(amount);
-                                        replacee.setUserId(uId);
-                                        replacee.setTillId(tId);
-                                        replacee.setSupplierId(sId);
-                                        replacee.setRunDate(rDate);
+                                    CashPaymentEntity replacee = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
+                                    replacee.setAmountPaid(amount);
+                                    replacee.setUserId(uId);
+                                    replacee.setTillId(tId);
+                                    replacee.setSupplierId(sId);
+                                    replacee.setRunDate(rDate);
 
-                                        replacee.setDateOfPayment(dateOfPayment);
-                                        replacee.setZedClear(true);
+                                    replacee.setDateOfPayment(dateOfPayment);
+                                    replacee.setZedClear(true);
 
-                                        cashPaymentService.updateMyCashPayment(replacee);
-
-                                    }
+                                    cashPaymentService.updateMyCashPayment(replacee);
                                 }
                                 //variables for temporal storage of cash payments before zed is cleared
                                 LinkedList<String> pettyPayeesTemp=new LinkedList<String>();
@@ -283,33 +281,30 @@ public class FrontEndHome extends JFrame {
                                 Integer amt, usId, tlId;
                                 Date rnDate, dop;
                                 String payee;
-                                List<PettyCashPaymentEntity> pettyPaymentEntities = pettyCashPaymentService.getAllMyPettyCashPayments();
+                                List<PettyCashPaymentEntity> pettyPaymentEntities = pettyCashPaymentService.getTillPettyCashPayments();
                                 for (PettyCashPaymentEntity petty : pettyPaymentEntities) {
-                                    if (!petty.getZedClear()) {
-                                        PettyCashPaymentEntity replace = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
-                                        amt = replace.getAmountPaid();
-                                        usId = replace.getUserId();
-                                        tlId = replace.getTillId();
-                                        payee = replace.getPayee();
-                                        rnDate = replace.getRunDate();
-                                        dop = replace.getDateOfPayment();
+                                    PettyCashPaymentEntity replace = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
+                                    amt = replace.getAmountPaid();
+                                    usId = replace.getUserId();
+                                    tlId = replace.getTillId();
+                                    payee = replace.getPayee();
+                                    rnDate = replace.getRunDate();
+                                    dop = replace.getDateOfPayment();
 
-                                        //save temporary values
-                                        pettyPayeesTemp.add(payee);
-                                        pettyCashAmountsPaidTemp.add(amt);
+                                    //save temporary values
+                                    pettyPayeesTemp.add(payee);
+                                    pettyCashAmountsPaidTemp.add(amt);
 
-                                        PettyCashPaymentEntity replacee = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
-                                        replacee.setAmountPaid(amt);
-                                        replacee.setUserId(usId);
-                                        replacee.setTillId(tlId);
-                                        replacee.setPayee(payee);
-                                        replacee.setRunDate(rnDate);
-                                        replacee.setDateOfPayment(dop);
-                                        replacee.setZedClear(true);
+                                    PettyCashPaymentEntity replacee = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
+                                    replacee.setAmountPaid(amt);
+                                    replacee.setUserId(usId);
+                                    replacee.setTillId(tlId);
+                                    replacee.setPayee(payee);
+                                    replacee.setRunDate(rnDate);
+                                    replacee.setDateOfPayment(dop);
+                                    replacee.setZedClear(true);
 
-                                        pettyCashPaymentService.updateMyPettyCashPayment(replacee);
-
-                                    }
+                                    pettyCashPaymentService.updateMyPettyCashPayment(replacee);
                                 }
                                 //update zed clear in receipts table
                                 List<ReceiptEntity> receiptEntities=receiptService.getAllMyReceipts();
@@ -416,7 +411,9 @@ public class FrontEndHome extends JFrame {
                                         setTomorrowRunDateValues.setVatableTotals(0);
                                         setTomorrowRunDateValues.setUnvatableTotals(0);
                                         setTomorrowRunDateValues.setProfits(0);
-                                        setTomorrowRunDateValues.setTillId(1);
+                                        setTomorrowRunDateValues.setCreditSales(0);
+                                        setTomorrowRunDateValues.setTillId(TILL_ID);
+                                        setTomorrowRunDateValues.setZedClear(false);
                                         setTomorrowRunDateValues.setUserId(uidKesho);
                                         Random random = new Random();
                                         setTomorrowRunDateValues.setRunDateId(random.nextInt());

@@ -10,6 +10,8 @@ import java.util.List;
 public interface RunDateDAO {
     List<RunDateTableEntity> getAllMyRunDates();
 
+    List<RunDateTableEntity> getMyActiveRunDate();
+
     RunDateTableEntity getMyRunDate(Integer myRunDateTableEntityId);
 
     RunDateTableEntity saveMyRunDate(RunDateTableEntity runDateTableEntity);

@@ -10,12 +10,14 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
 
-
+import static com.kinpos.gui.resources.Constants.DB_HOST_ADDRESS;
+import static com.kinpos.gui.resources.Constants.DB_USER;
+import static com.kinpos.gui.resources.Constants.DB_PASSWORD;
 public class ProductSearch extends JFrame {
     // database URL, username and password
-    static final String DATABASE_URL = "jdbc:mysql://localhost/pos";
-    static final String USERNAME = "root";
-    static final String PASSWORD = "paradise";
+    static final String DATABASE_URL = DB_HOST_ADDRESS;
+    static final String USERNAME = DB_USER;
+    static final String PASSWORD = DB_PASSWORD;
     // default query retrieves all data from stock table
     static final String DEFAULT_QUERY = "SELECT productCode,productName,sellingPricePerUnit from stock";
     private PointOfSale pointOfSale;

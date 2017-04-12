@@ -2,12 +2,17 @@ package com.kinpos.dao.hibernate;
 
 import com.kinpos.dao.RunDateDAO;
 import com.kinpos.models.RunDateTableEntity;
+import com.kinpos.models.SaleEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
+
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 /**
  * Created by kinyua on 6/19/15.
@@ -21,6 +26,18 @@ public class HibernateRunDateDAO implements RunDateDAO {
         List<RunDateTableEntity> runDateTableEntities=session.createCriteria(RunDateTableEntity.class).list();
         session.close();
         return runDateTableEntities;
+    }
+
+    @Override
+    public List<RunDateTableEntity> getMyActiveRunDate()
+    {
+        Session session=sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(RunDateTableEntity.class);
+        criteria.add(Restrictions.eq("activeStatus", true));
+        criteria.add(Restrictions.eq("tillId", TILL_ID));
+        List list = criteria.list();
+        session.close();
+        return list;
     }
 
     @Override

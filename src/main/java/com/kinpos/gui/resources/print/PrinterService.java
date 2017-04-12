@@ -28,6 +28,7 @@ import javax.print.SimpleDoc;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 public class PrinterService implements Printable
 {
 
@@ -217,7 +218,7 @@ public class PrinterService implements Printable
         text += "\tTIME:" + new java.util.Date().toLocaleString() + "\n" ;
         text += "\tRUN DATE:"+runDateActual+"\n" ;
         text += "-------------------------------------------\n" ;
-        text += "\tZED FIGURES FOR TILL 1\n" ;
+        text += "\tZED FIGURES FOR TILL "+TILL_ID+"\n" ;
         text += "\n=========================================\n" ;
         text += "\t**********Computer Analysis*********\n" ;
         text += "-------------------------------------------\n" ;
@@ -247,7 +248,7 @@ public class PrinterService implements Printable
         text += "-------------------------------------------\n" ;
         Integer pt=0;
         for (int i=0; i<supplierNamesTemp.size(); i++){
-            text += supplierNamesTemp.get(i)+"\t"+"\t\t"+cashAmountsPaidTemp.get(i)+"\n" ;
+            text += supplierNamesTemp.get(i)+"\t\t"+cashAmountsPaidTemp.get(i)+"\n" ;
             pt=pt+cashAmountsPaidTemp.get(i) ;
         }
 
@@ -260,7 +261,7 @@ public class PrinterService implements Printable
         text += "-----------------------------------------\n" ;
         Integer pt1=0;
         for (int i=0;i<pettyPayeesTemp.size() ;i++){
-            text += pettyPayeesTemp.get(i)+"\t"+"\t\t"+pettyCashAmountsPaidTemp.get(i)+"\n" ;
+            text += pettyPayeesTemp.get(i)+"\t\t"+pettyCashAmountsPaidTemp.get(i)+"\n" ;
             pt1=pt1+pettyCashAmountsPaidTemp.get(i) ;
         }
         text += "-----------------------------------------\n" ;
@@ -271,7 +272,7 @@ public class PrinterService implements Printable
         text += "\n=========================================\n" ;
         text += "\n-----------------------------------------\n" ;
         text += "Authorised By:" + authority ;
-        text += "\n=========================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        text += "\n=========================================\n\n\n\n\n\n\n\n\n\n";
 
         print(text);
     }
@@ -287,7 +288,7 @@ public class PrinterService implements Printable
         text += creditor + "\t\tKES" + cash;
         text += "\n-------------------------------------------\n" ;
         text += "Paid By:" + user;
-        text += "\n=========================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        text += "\n=========================================\n\n\n\n\n\n\n\n";
 
         print(text);
     }
@@ -303,7 +304,7 @@ public class PrinterService implements Printable
         text += payee + "\t\tKES" + cash;
         text += "\n-------------------------------------------\n" ;
         text += "Paid By:" + user;
-        text += "\n=========================================\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+        text += "\n=========================================\n\n\n\n\n\n\n\n";
 
         print(text);
     }

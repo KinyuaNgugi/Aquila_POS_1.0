@@ -17,6 +17,7 @@ public class ReceiptEntity {
     private Integer receiptTotal;
     private Boolean zedClear;
     private String creditStatus;
+    private Integer tillId;
 
     @Basic
     @Column(name = "credit_status")
@@ -26,6 +27,16 @@ public class ReceiptEntity {
 
     public void setCreditStatus(String creditStatus) {
         this.creditStatus = creditStatus;
+    }
+
+    @Basic
+    @Column(name = "tillId")
+    public Integer getTillId() {
+        return tillId;
+    }
+
+    public void setTillId(Integer tillId) {
+        this.tillId = tillId;
     }
 
     @Basic

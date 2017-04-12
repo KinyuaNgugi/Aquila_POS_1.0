@@ -13,12 +13,16 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
 
+import static com.kinpos.gui.resources.Constants.DB_HOST_ADDRESS;
+import static com.kinpos.gui.resources.Constants.DB_USER;
+import static com.kinpos.gui.resources.Constants.DB_PASSWORD;
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 public class ReceiptToday extends JFrame {
     // database URL, username and password
-    static final String DATABASE_URL = "jdbc:mysql://localhost/pos";
-    static final String USERNAME = "root";
-    static final String PASSWORD = "paradise";
+    static final String DATABASE_URL = DB_HOST_ADDRESS;
+    static final String USERNAME = DB_USER;
+    static final String PASSWORD = DB_PASSWORD;
 
     public final RunDateDAO runDateService=new HibernateRunDateDAO();
     String runDateActual;
@@ -31,14 +35,13 @@ public class ReceiptToday extends JFrame {
         // create ResultSetTableModel and display database table
         try {
             //get run date
-            java.util.List<RunDateTableEntity> runDates = runDateService.getAllMyRunDates();
-            for (RunDateTableEntity runDate : runDates) {
-                if (runDate.getActiveStatus()) {
-                    runDateActual = runDate.getRunDate().toString();
-                }
+            java.util.List<RunDateTableEntity> runDates = runDateService.getMyActiveRunDate();
+            for (RunDateTableEntity runDate : runDates)
+            {
+                runDateActual = runDate.getRunDate().toString();
             }
             String DEFAULT_QUERY = "SELECT actualDate,receiptNumber,receiptTotal FROM receipt " +
-                    "WHERE runDate="+"'"+runDateActual+"'AND zedClear='0' ORDER BY receiptNumber";
+                    "WHERE runDate="+"'"+runDateActual+"'AND zedClear='0' AND tillId="+TILL_ID+ " ORDER BY receiptNumber";
             // create TableModel for results of query SELECT * FROM stock
             tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, DEFAULT_QUERY);
             JScrollPane scrollPane = new JScrollPane(

@@ -1,13 +1,18 @@
 package com.kinpos.dao.hibernate;
 
 import com.kinpos.dao.PettyCashPaymentDAO;
+import com.kinpos.models.CashPaymentEntity;
 import com.kinpos.models.PettyCashPaymentEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
+
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 /**
  * Created by kinyua on 5/27/15.
@@ -21,6 +26,17 @@ public class HibernatePettyCashPaymentDAO implements PettyCashPaymentDAO {
         List<PettyCashPaymentEntity> pettyCashPaymentEntities=session.createCriteria(PettyCashPaymentEntity.class).list();
         session.close();
         return pettyCashPaymentEntities;
+    }
+
+    @Override
+    public List<PettyCashPaymentEntity> getTillPettyCashPayments() {
+        Session session=sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(PettyCashPaymentEntity.class);
+        criteria.add(Restrictions.eq("zedClear", false));
+        criteria.add(Restrictions.eq("tillId", TILL_ID));
+        List list = criteria.list();
+        session.close();
+        return list;
     }
 
     @Override

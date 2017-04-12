@@ -15,13 +15,17 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
+import static com.kinpos.gui.resources.Constants.DB_HOST_ADDRESS;
+import static com.kinpos.gui.resources.Constants.DB_USER;
+import static com.kinpos.gui.resources.Constants.DB_PASSWORD;
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 
 public class CashPaymentToday extends JFrame {
     // database URL, username and password
-    static final String DATABASE_URL = "jdbc:mysql://localhost/pos";
-    static final String USERNAME = "root";
-    static final String PASSWORD = "paradise";
+    static final String DATABASE_URL = DB_HOST_ADDRESS;
+    static final String USERNAME = DB_USER;
+    static final String PASSWORD = DB_PASSWORD;
 
     public final RunDateDAO runDateService=new HibernateRunDateDAO();
     String runDateActual;
@@ -30,7 +34,7 @@ public class CashPaymentToday extends JFrame {
 
     // create ResultSetTableModel and GUI
     public CashPaymentToday() {
-        super("Displaying Product Results for Today");
+        super("Displaying Cash Payments for Today");
         // create ResultSetTableModel and display database table
         try {
             //get run date
@@ -42,7 +46,7 @@ public class CashPaymentToday extends JFrame {
             }
             String DEFAULT_QUERY = "SELECT cashPaymentId,supplierName,amountPaid FROM cashPayment INNER JOIN supplier " +
                     "WHERE cashPayment.supplierId=supplier.supplierId AND runDate="+"'"+runDateActual
-                    +"'AND zedClear='0'";
+                    +"'AND zedClear='0' AND tillId="+TILL_ID;
             // create TableModel for results of query SELECT * FROM stock
             tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, DEFAULT_QUERY);
             JScrollPane scrollPane = new JScrollPane(

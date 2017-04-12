@@ -10,6 +10,8 @@ import java.util.List;
 public interface PettyCashPaymentDAO {
     List<PettyCashPaymentEntity> getAllMyPettyCashPayments();
 
+    List<PettyCashPaymentEntity> getTillPettyCashPayments();
+
     PettyCashPaymentEntity getMyPettyCashPayment(Integer myPettyCashPaymentEntityId);
 
     PettyCashPaymentEntity saveMyPettyCashPayment(PettyCashPaymentEntity pettyCashPaymentEntity);

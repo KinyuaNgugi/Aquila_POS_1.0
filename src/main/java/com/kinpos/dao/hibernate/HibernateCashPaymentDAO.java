@@ -2,12 +2,17 @@ package com.kinpos.dao.hibernate;
 
 import com.kinpos.dao.CashPaymentDAO;
 import com.kinpos.models.CashPaymentEntity;
+import com.kinpos.models.RunDateTableEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
+
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 /**
  * Created by kinyua on 5/27/15.
@@ -21,6 +26,17 @@ public class HibernateCashPaymentDAO implements CashPaymentDAO {
         List<CashPaymentEntity> cashPaymentEntities= session.createCriteria(CashPaymentEntity.class).list();
         session.close();
         return cashPaymentEntities;
+    }
+
+    @Override
+    public List<CashPaymentEntity> getTillCashPayments() {
+        Session session=sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(CashPaymentEntity.class);
+        criteria.add(Restrictions.eq("zedClear", false));
+        criteria.add(Restrictions.eq("tillId", TILL_ID));
+        List list = criteria.list();
+        session.close();
+        return list;
     }
 
     @Override

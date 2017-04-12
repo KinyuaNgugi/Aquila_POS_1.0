@@ -13,12 +13,15 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.util.regex.PatternSyntaxException;
 
-
+import static com.kinpos.gui.resources.Constants.DB_HOST_ADDRESS;
+import static com.kinpos.gui.resources.Constants.DB_USER;
+import static com.kinpos.gui.resources.Constants.DB_PASSWORD;
+import static com.kinpos.gui.resources.Constants.TILL_ID;
 public class PettyCashPaymentToday extends JFrame {
     // database URL, username and password
-    static final String DATABASE_URL = "jdbc:mysql://localhost/pos";
-    static final String USERNAME = "root";
-    static final String PASSWORD = "paradise";
+    static final String DATABASE_URL = DB_HOST_ADDRESS;
+    static final String USERNAME = DB_USER;
+    static final String PASSWORD = DB_PASSWORD;
 
     public final RunDateDAO runDateService=new HibernateRunDateDAO();
     String runDateActual;
@@ -31,14 +34,12 @@ public class PettyCashPaymentToday extends JFrame {
         // create ResultSetTableModel and display database table
         try {
             //get run date
-            java.util.List<RunDateTableEntity> runDates = runDateService.getAllMyRunDates();
+            java.util.List<RunDateTableEntity> runDates = runDateService.getMyActiveRunDate();
             for (RunDateTableEntity runDate : runDates) {
-                if (runDate.getActiveStatus()) {
-                    runDateActual = runDate.getRunDate().toString();
-                }
+                runDateActual = runDate.getRunDate().toString();
             }
             String DEFAULT_QUERY = "SELECT pettyCashPaymentId,payee,amountPaid FROM pettyCashPayment INNER JOIN supplier " +
-                    "WHERE runDate="+"'"+runDateActual+"'AND zedClear='0'";
+                    "WHERE runDate="+"'"+runDateActual+"'AND zedClear='0' AND tillId="+TILL_ID;
             // create TableModel for results of query SELECT * FROM stock
             tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, DEFAULT_QUERY);
             JScrollPane scrollPane = new JScrollPane(
