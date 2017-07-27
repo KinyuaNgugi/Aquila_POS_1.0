@@ -9,5 +9,11 @@
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
     </data-source>
+    <data-source name="MySQL - pos2@localhost" uuid="04d6b05f-46be-44c2-a6d9-f0407f599a4f">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>pos2.*</schema-pattern>
+      <default-schemas>pos2.*</default-schemas>
+    </data-source>
   </component>
 </project>

@@ -12,6 +12,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Formatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,10 +45,8 @@ public class Login extends JFrame{
             //get all users
             final java.util.List<UserEntity> userEntityList = userService.getAllMyUsers();
             for (UserEntity user : userEntityList) {
-                if (user.getOperationStatus())
-                    if (user.getRole().equals("pos") || user.getRole().equals("both")) {
-                        userList.add(user.getUserName());
-                    }
+                if (user.getStatus() == 1)
+                    userList.add(user.getUsername());
             }
             JLabel welcomeMsg = new JLabel("Welcome To EdenMart Supermarket Login Page");
             JLabel log = new JLabel("Please enter your credentials to access the system");
@@ -99,7 +102,7 @@ public class Login extends JFrame{
                             List<UserEntity> userEntityL = userService.getMyUserByUserName(usersCombo.getSelectedItem().toString());
                             for (UserEntity u : userEntityL) {
 
-                                if (passwordField.getText().equals(u.getPassword())) {
+                                if (encryptPassword(passwordField.getText()).equals(u.getPassword()))  {
                                     new FrontEndHome(u);
                                     setVisible(false);
                                     break;
@@ -116,8 +119,7 @@ public class Login extends JFrame{
                 public void actionPerformed(ActionEvent ae) {
                     List<UserEntity> userEntityL = userService.getMyUserByUserName(usersCombo.getSelectedItem().toString());
                     for (UserEntity u : userEntityL) {
-
-                        if (passwordField.getText().equals(u.getPassword())) {
+                        if (encryptPassword(passwordField.getText()).equals(u.getPassword())) {
                             new FrontEndHome(u);
                             setVisible(false);
                             break;
@@ -137,9 +139,41 @@ public class Login extends JFrame{
             System.out.print(ex.getLocalizedMessage());
         }
     }
+    private static String encryptPassword(String password)
+    {
+        String sha1 = "";
+        try
+        {
+            MessageDigest crypt = MessageDigest.getInstance("SHA-1");
+            crypt.reset();
+            crypt.update(password.getBytes("UTF-8"));
+            sha1 = byteToHex(crypt.digest());
+        }
+        catch(NoSuchAlgorithmException e)
+        {
+            e.printStackTrace();
+        }
+        catch(UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        return sha1;
+    }
 
+    private static String byteToHex(final byte[] hash)
+    {
+        Formatter formatter = new Formatter();
+        for (byte b : hash)
+        {
+            formatter.format("%02x", b);
+        }
+        String result = formatter.toString();
+        formatter.close();
+        return result;
+    }
     public static void main (String args[]){
         new Login();
     }
+
 }
 

@@ -8,24 +8,35 @@ import java.sql.Timestamp;
  * Created by kinyua on 4/14/16.
  */
 @Entity
-@Table(name = "receipt", schema = "", catalog = "pos")
-public class ReceiptEntity {
+@Table(name = "income", schema = "", catalog = "pos2")
+public class IncomeEntity {
     private Integer rid;
     private String receiptNumber;
     private Date runDate;
     private Timestamp actualDate;
-    private Integer receiptTotal;
     private Boolean zedClear;
-    private String creditStatus;
+    private Integer creditStatus;
     private Integer tillId;
+    private Integer userId;
+    private Integer clientId;
 
     @Basic
-    @Column(name = "credit_status")
-    public String getCreditStatus() {
+    @Column(name = "client_id")
+    public Integer getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
+    }
+
+    @Basic
+    @Column(name = "paid")
+    public Integer getCreditStatus() {
         return creditStatus;
     }
 
-    public void setCreditStatus(String creditStatus) {
+    public void setCreditStatus(Integer creditStatus) {
         this.creditStatus = creditStatus;
     }
 
@@ -90,28 +101,28 @@ public class ReceiptEntity {
     }
 
     @Basic
-    @Column(name = "receiptTotal")
-    public Integer getReceiptTotal() {
-        return receiptTotal;
+    @Column(name = "userId")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setReceiptTotal(Integer receiptTotal) {
-        this.receiptTotal = receiptTotal;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ReceiptEntity that = (ReceiptEntity) o;
+        IncomeEntity that = (IncomeEntity) o;
 
         if (rid != null ? !rid.equals(that.rid) : that.rid != null) return false;
         if (receiptNumber != null ? !receiptNumber.equals(that.receiptNumber) : that.receiptNumber != null)
             return false;
         if (runDate != null ? !runDate.equals(that.runDate) : that.runDate != null) return false;
         if (actualDate != null ? !actualDate.equals(that.actualDate) : that.actualDate != null) return false;
-        if (receiptTotal != null ? !receiptTotal.equals(that.receiptTotal) : that.receiptTotal != null) return false;
 
         return true;
     }
@@ -122,7 +133,6 @@ public class ReceiptEntity {
         result = 31 * result + (receiptNumber != null ? receiptNumber.hashCode() : 0);
         result = 31 * result + (runDate != null ? runDate.hashCode() : 0);
         result = 31 * result + (actualDate != null ? actualDate.hashCode() : 0);
-        result = 31 * result + (receiptTotal != null ? receiptTotal.hashCode() : 0);
         return result;
     }
 }

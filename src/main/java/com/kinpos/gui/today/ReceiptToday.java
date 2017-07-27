@@ -40,7 +40,7 @@ public class ReceiptToday extends JFrame {
             {
                 runDateActual = runDate.getRunDate().toString();
             }
-            String DEFAULT_QUERY = "SELECT actualDate,receiptNumber,receiptTotal FROM receipt " +
+            String DEFAULT_QUERY = "SELECT actualDate,receiptNumber,receiptTotal FROM income " +
                     "WHERE runDate="+"'"+runDateActual+"'AND zedClear='0' AND tillId="+TILL_ID+ " ORDER BY receiptNumber";
             // create TableModel for results of query SELECT * FROM stock
             tableModel = new ResultSetTableModel(DATABASE_URL, USERNAME, PASSWORD, DEFAULT_QUERY);

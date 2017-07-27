@@ -7,7 +7,7 @@ import java.sql.Date;
  * Created by kinyua on 7/24/15.
  */
 @Entity
-@Table(name = "pettycashpayment", schema = "", catalog = "pos")
+@Table(name = "petty_cash_payment", schema = "", catalog = "pos2")
 public class PettyCashPaymentEntity {
     private Integer pettyCashPaymentId;
     private Integer amountPaid;

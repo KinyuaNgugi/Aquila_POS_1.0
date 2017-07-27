@@ -53,7 +53,7 @@ public class HibernateUserDAO implements UserDAO {
     public List<UserEntity> getMyUserByUserName(String userName) {
         Session session=sessionFactory.openSession();
         Criteria criteria = session.createCriteria(UserEntity.class, userName);
-        criteria.add(Restrictions.eq("userName", userName));
+        criteria.add(Restrictions.eq("username", userName));
         List list = criteria.list();
         session.close();
         return list;

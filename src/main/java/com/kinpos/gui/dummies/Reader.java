@@ -80,18 +80,18 @@ public class Reader {
                     stock.setSellingPricePerUnit(stockedenEntity.getPrice());
                     stock.setReorderLevel(1);
                     stock.setSupplierId(1160644143);
-                    stock.setMarginOrPercent("percent");
-                    stock.setActualMargin(stockedenEntity.getPrice());
+                    //stock.setMarginOrPercent("percent");
+                    //stock.setActualMargin(stockedenEntity.getPrice());
                     stock.setPacking(1);
                     Double margin=((stockedenEntity.getPrice().doubleValue() - 1)/1)*100;
-                    stock.setMargin(margin);
+                    //stock.setMargin(margin);
                     if (stockedenEntity.getVat().equals("E") || stockedenEntity.getVat().equals("Z")  ){
-                        stock.setVatable("unvatable");
-                        stock.setVatAmount(0.00);
+                        //stock.setVatable("unvatable");
+                        //stock.setVatAmount(0.00);
                     }
                     if (stockedenEntity.getVat().equals("S")){
-                        stock.setVatable("vatable");
-                        stock.setVatAmount(stockedenEntity.getPrice()*0.16);
+                        //stock.setVatable("vatable");
+                        //stock.setVatAmount(stockedenEntity.getPrice()*0.16);
                     }
                     stock.setUnitsInStock(0);
                     stock.setStockId(random);
@@ -130,32 +130,32 @@ public class Reader {
         int prof=0;
         for (StockEntity stockEntity:stockEntityList) {
             //save products and quantities to sales table
-            SaleEntity saleEntity = new SaleEntity();
-            saleEntity.setUnitsSold(2);
-            saleEntity.setDateOfSale(new java.sql.Date(System.currentTimeMillis()));
-            saleEntity.setRunDate(runDateActual);
-            saleEntity.setReceiptNumber(String.valueOf(i));
-            saleEntity.setStockId(stockEntity.getStockId());
+            /*IncomeItemsEntity incomeItemsEntity = new IncomeItemsEntity();
+            incomeItemsEntity.setUnitsSold(2);
+            incomeItemsEntity.setDateOfSale(new java.sql.Date(System.currentTimeMillis()));
+            incomeItemsEntity.setRunDate(runDateActual);
+            incomeItemsEntity.setReceiptNumber(String.valueOf(i));
+            incomeItemsEntity.setStockId(stockEntity.getStockId());
             Random random = new Random();
-            saleEntity.setSaleId(random.nextInt());
-            saleEntity.setTillId(01);
-            saleEntity.setUserId(315535663);
-            saleEntity.setZedClear(false);
-            saleEntity.setProfit(stockEntity.getSellingPricePerUnit() - stockEntity.getBuyingPricePerUnit());
+            incomeItemsEntity.setSaleId(random.nextInt());
+            incomeItemsEntity.setTillId(01);
+            incomeItemsEntity.setUserId(315535663);
+            incomeItemsEntity.setZedClear(false);
+            incomeItemsEntity.setProfit(stockEntity.getSellingPricePerUnit() - stockEntity.getBuyingPricePerUnit());
             prof+=stockEntity.getSellingPricePerUnit()-stockEntity.getBuyingPricePerUnit();
-            saleService.saveMySale(saleEntity);
+            saleService.saveMySale(incomeItemsEntity);*/
 
             //save individual receipt and total(required creation of receipts table)
-            ReceiptEntity receiptEntity=new ReceiptEntity();
-            receiptEntity.setReceiptNumber(i+"");
-            receiptEntity.setRunDate(runDateActual);
-            receiptEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
-            receiptEntity.setReceiptTotal(stockEntity.getSellingPricePerUnit());
-            receiptEntity.setZedClear(false);
+            /*IncomeEntity incomeEntity =new IncomeEntity();
+            incomeEntity.setReceiptNumber(i+"");
+            incomeEntity.setRunDate(runDateActual);
+            incomeEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
+            incomeEntity.setReceiptTotal(stockEntity.getSellingPricePerUnit());
+            incomeEntity.setZedClear(false);
             Random r=new Random();
-            receiptEntity.setRid(r.nextInt());
+            incomeEntity.setRid(r.nextInt());
 
-            receiptService.saveMyReceipt(receiptEntity);
+            receiptService.saveMyReceipt(incomeEntity);
 
             //update the runDate table(customer count and sales)
             RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
@@ -166,8 +166,8 @@ public class Reader {
             Integer customerCountPrevious = getRunDateValues.getCustomerCount();
             Integer profit=getRunDateValues.getProfits();
             Integer till=getRunDateValues.getTillId();
-            Integer uid=getRunDateValues.getUserId();
-
+            Integer uid=getRunDateValues.getUserId();*/
+/*
             RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
             setNewRunDateValues.setRunDate(runDateActual);
             setNewRunDateValues.setActiveStatus(true);
@@ -180,7 +180,7 @@ public class Reader {
             setNewRunDateValues.setCustomerCount(customerCountPrevious + 1);
             setNewRunDateValues.setUserId(uid);
 
-            runDateService.updateMyRunDate(setNewRunDateValues);
+            runDateService.updateMyRunDate(setNewRunDateValues);*/
 
         }
     }
@@ -209,7 +209,7 @@ public class Reader {
             cashPaymentService.saveMyCashPayment(cashInsert);
 
             //save to run date table
-            RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
+            /*RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
             Integer payments = getRunDateValues.getCashPayments();
             Integer pettyCash = getRunDateValues.getPettyCashPayments();
             Integer sales = getRunDateValues.getSales();
@@ -223,9 +223,9 @@ public class Reader {
             setNewRunDateValues.setPettyCashPayments(pettyCash);
             setNewRunDateValues.setManualCashEntry(manualCash);
             setNewRunDateValues.setSales(sales);
-            setNewRunDateValues.setCustomerCount(customerCount);
+            setNewRunDateValues.setCustomerCount(customerCount);*/
 
-            runDateService.updateMyRunDate(setNewRunDateValues);
+            //runDateService.updateMyRunDate(setNewRunDateValues);
         }
     }
     public  static void main(String args[]){

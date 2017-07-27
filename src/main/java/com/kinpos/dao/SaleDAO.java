@@ -1,25 +1,26 @@
 package com.kinpos.dao;
 
-import com.kinpos.models.SaleEntity;
+import com.kinpos.models.IncomeItemsEntity;
 
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by kinyua on 6/19/15.
  */
 public interface SaleDAO {
-    List<SaleEntity> getAllMySales();
+    List<IncomeItemsEntity> getAllMySales();
 
-    List<SaleEntity> getAllMyUnclearedSales();
+    List<IncomeItemsEntity> getAllMyUnclearedSales();
 
-    SaleEntity getMySale(Integer mySaleEntityId);
+    List<IncomeItemsEntity> getItemsForReceipt(Integer receipt_id);
 
-    SaleEntity saveMySale(SaleEntity saleEntity);
+    IncomeItemsEntity getMySale(Integer mySaleEntityId);
 
-    SaleEntity updateMySale(SaleEntity saleEntity);
+    IncomeItemsEntity saveMySale(IncomeItemsEntity incomeItemsEntity);
 
-    void purgeMySale(SaleEntity saleEntity);
+    IncomeItemsEntity updateMySale(IncomeItemsEntity incomeItemsEntity);
 
-    List<SaleEntity> getCreditSalesByReceipt(String receipt, java.sql.Date runDate);
+    void purgeMySale(IncomeItemsEntity incomeItemsEntity);
+
+    List<IncomeItemsEntity> getCreditSalesByReceipt(String receipt, java.sql.Date runDate);
 }

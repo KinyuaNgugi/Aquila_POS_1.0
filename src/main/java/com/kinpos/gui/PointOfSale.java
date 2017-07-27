@@ -39,6 +39,9 @@ public class PointOfSale extends JFrame {
     public final SaleDAO saleService = new HibernateSaleDAO();
     public final RunDateDAO runDateService = new HibernateRunDateDAO();
     public final SupplierDAO supplierService=new HibernateSupplierDAO();
+    public final OrgChartDAO chartService=new HibernateOrgChartDAO();
+    public final AccountPostingsDAO postingService=new HibernateAccountPostingsDAO();
+    public final CountryTaxRatesDAO taxService=new HibernateCountryTaxRatesDAO();
     public final CashPaymentDAO cashPaymentService = new HibernateCashPaymentDAO();
     public final PettyCashPaymentDAO pettyCashPaymentService = new HibernatePettyCashPaymentDAO();
     public final ReceiptDAO receiptService = new HibernateReceiptDAO();
@@ -54,12 +57,13 @@ public class PointOfSale extends JFrame {
     String colEmpty[] = {"", "", "", "", ""};
     LinkedList<Integer> productCodes= new LinkedList<Integer>();
     LinkedList<Integer> productQuantities = new LinkedList<Integer>();
-    LinkedList<Integer> productPrices=new LinkedList<Integer>();
-    LinkedList<Integer> profits = new LinkedList<Integer>();
+    LinkedList<Float> productPrices=new LinkedList<Float>();
+    LinkedList<Float> profits = new LinkedList<Float>();
+    LinkedList<Float> taxes = new LinkedList<Float>();
     LinkedList<String> productNames=new LinkedList<String>();
     String code;
     int row = 0;
-    Integer change=0;
+    float change=0;
     Integer total = 0;
     JLabel totalLabel;
     java.sql.Date runDateActual;
@@ -69,6 +73,7 @@ public class PointOfSale extends JFrame {
     boolean multipleAccept=false;
     private ProductSearch productSearch = new ProductSearch(this);
 
+    JComboBox supplierCombo;
     List<String>productList=new LinkedList<String>();
     public PointOfSale(final  UserEntity userEntity)
     {
@@ -85,10 +90,14 @@ public class PointOfSale extends JFrame {
 
             //populating supplier list
             List<SupplierEntity> supplierEntityList= supplierService.getAllMySuppliers();
+            supplierList.add("Select Supplier");
             for (SupplierEntity supplierEntity:supplierEntityList){
-                if (supplierEntity.getMethodOfPayment().equals("cash"))
+                if (supplierEntity.getMethodOfPayment() == 2)
                     supplierList.add(supplierEntity.getSupplierName());
             }
+
+            supplierCombo = new JComboBox(supplierList.toArray());
+            supplierCombo.setBackground(Color.yellow);
 
             //getting all products
             List<StockEntity> stockEntityList=product.getAllMyStocks();
@@ -137,7 +146,7 @@ public class PointOfSale extends JFrame {
 
             detailArea.append("System Date: " + systemDate.toLocaleString().substring(0, 12));
             detailArea.append("\n\nRun Date: " + runDateActual.toLocaleString().substring(0, 12));
-            detailArea.append("\n\nteller: "+ userEntity.getUserName());
+            detailArea.append("\n\nteller: "+ userEntity.getUsername());
 
 
             area.setFont(new Font("Serif", Font.BOLD, 47));
@@ -228,8 +237,10 @@ public class PointOfSale extends JFrame {
                                     profits.add(stock.getSellingPricePerUnit() - stock.getBuyingPricePerUnit());
                                     productQuantities.add(Integer.parseInt(table.getValueAt(row, 2).toString().trim()));
                                     productNames.add(table.getValueAt(row, 1).toString());
-                                    productPrices.add(Integer.parseInt(table.getValueAt(row, 3).toString().trim()));
-                                    Integer newTotal = 0;
+                                    productPrices.add(Float.parseFloat(table.getValueAt(row, 3).toString().trim()));
+                                    taxes.add(taxService.getMyTaxRate(stock.getVat()).getRate() * stock.getSellingPricePerUnit());
+
+                                    float newTotal = 0;
                                     for (int i = 0; i < productCodes.size(); i++) {
                                         newTotal = newTotal + productPrices.get(i) * productQuantities.get(i);
                                     }
@@ -237,7 +248,7 @@ public class PointOfSale extends JFrame {
                                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                                     model.addRow(colEmpty);
                                     table.editCellAt(row, 0);
-                                    area.setText("Total\nKSH " + newTotal.toString() + ".00");
+                                    area.setText("Total\nKSH " + newTotal + ".00");
                                     table.changeSelection(table.getRowCount() - 1, 0, false, false);
                                 }
                             } else {
@@ -248,14 +259,15 @@ public class PointOfSale extends JFrame {
                         }
                         if (multipleAccept==true){
                             for (StockEntity stock : stockEntity) {
-                                Integer t=Integer.parseInt(table.getValueAt(row,2).toString().trim())*stock.getSellingPricePerUnit();
+                                float t=Integer.parseInt(table.getValueAt(row,2).toString().trim())*stock.getSellingPricePerUnit();
                                 table.setValueAt(t, row, 4);
                                 productCodes.add(stock.getStockId());
                                 profits.add((stock.getSellingPricePerUnit() - stock.getBuyingPricePerUnit())*Integer.parseInt(table.getValueAt(row,2).toString().trim()));
                                 productQuantities.add(Integer.parseInt(table.getValueAt(row, 2).toString().trim()));
                                 productNames.add(table.getValueAt(row, 1).toString());
-                                productPrices.add(Integer.parseInt(table.getValueAt(row, 3).toString().trim()));
-                                Integer newTotal=0;
+                                productPrices.add(Float.parseFloat(table.getValueAt(row, 3).toString().trim()));
+                                taxes.add(taxService.getMyTaxRate(stock.getVat()).getRate() * stock.getSellingPricePerUnit());
+                                float newTotal=0;
                                 for (int i=0;i<productCodes.size();i++){
                                     newTotal=newTotal+productPrices.get(i)*productQuantities.get(i);
                                 }
@@ -263,7 +275,7 @@ public class PointOfSale extends JFrame {
                                 DefaultTableModel model = (DefaultTableModel) table.getModel();
                                 model.addRow(colEmpty);
                                 table.editCellAt(row, 0);
-                                area.setText("Total\nKSH " + newTotal.toString() + ".00");
+                                area.setText("Total\nKSH " + newTotal + ".00");
                                 table.changeSelection(table.getRowCount() - 1, 0, false, false);
                                 multip=false;
                                 multipleAccept=false;
@@ -419,14 +431,16 @@ public class PointOfSale extends JFrame {
                                     table.setValueAt(1, row, 2);
                                     Integer pCode=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(), 4).toString().trim());
                                     productCodes.add(pCode);
-                                    Integer sPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),2).toString().trim());
+                                    float sPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),2).toString().trim());
                                     table.setValueAt(sPrice,row,4);
-                                    Integer bPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),5).toString().trim());
+                                    float bPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),5).toString().trim());
                                     profits.add(sPrice-bPrice);
                                     productQuantities.add(1);
                                     productNames.add(resultTable.getValueAt(resultTable.getSelectedRow(), 1).toString());
                                     productPrices.add(sPrice);
-                                    Integer newTotal = 0;
+                                    StockEntity stock = product.getMyStock(pCode);
+                                    taxes.add(taxService.getMyTaxRate(stock.getVat()).getRate() * stock.getSellingPricePerUnit());
+                                    float newTotal = 0;
                                     for (int i = 0; i < productCodes.size(); i++) {
                                         newTotal = newTotal + productPrices.get(i) * productQuantities.get(i);
                                     }
@@ -434,9 +448,9 @@ public class PointOfSale extends JFrame {
                                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                                     model.addRow(colEmpty);
                                     table.editCellAt(row, 0);
-                                    area.setText("Total\nKSH " + newTotal.toString() + ".00");
+                                    area.setText("Total\nKSH " + newTotal + ".00");
                                     tableModel.disconnectFromDatabase();
-                                    f.setVisible(false);
+                                    f.dispose();
                                 }
                                 //find
                                 else
@@ -449,21 +463,24 @@ public class PointOfSale extends JFrame {
                                     table.getColumnModel().getColumn(4).setPreferredWidth(180);
                                     table.setValueAt(resultTable.getValueAt(resultTable.getSelectedRow(),0),row,0);
                                     table.setValueAt(resultTable.getValueAt(resultTable.getSelectedRow(), 1), row, 1);
-                                    f.setVisible(false);
+                                    f.dispose();
                                     Integer t=Integer.parseInt(table.getValueAt(row,2).toString().trim())*
                                             Integer.parseInt(table.getValueAt(row, 3).toString().trim());
                                     table.editCellAt(row,2);
                                     table.setValueAt(t, row, 4);
                                     Integer pCode=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(), 4).toString().trim());
                                     productCodes.add(pCode);
-                                    Integer sPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),2).toString().trim());
+                                    float sPrice=Float.parseFloat(resultTable.getValueAt(resultTable.getSelectedRow(),2).toString().trim());
                                     table.setValueAt(sPrice, row, 4);
-                                    Integer bPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),5).toString().trim());
+                                    float bPrice=Integer.parseInt(resultTable.getValueAt(resultTable.getSelectedRow(),5).toString().trim());
                                     profits.add(sPrice-bPrice);
                                     productQuantities.add(Integer.parseInt(table.getValueAt(row,2).toString().trim()));
                                     productNames.add(resultTable.getValueAt(resultTable.getSelectedRow(), 1).toString());
                                     productPrices.add(sPrice);
-                                    Integer newTotal=0;
+                                    StockEntity stock = product.getMyStock(pCode);
+                                    taxes.add(taxService.getMyTaxRate(stock.getVat()).getRate() * stock.getSellingPricePerUnit());
+
+                                    float newTotal=0;
                                     for (int i=0;i<productCodes.size();i++){
                                         newTotal=newTotal+productPrices.get(i)*productQuantities.get(i);
                                     }
@@ -471,7 +488,7 @@ public class PointOfSale extends JFrame {
                                     DefaultTableModel model = (DefaultTableModel) table.getModel();
                                     model.addRow(colEmpty);
                                     table.editCellAt(row, 0);
-                                    area.setText("Total\nKSH " + newTotal.toString() + ".00");
+                                    area.setText("Total\nKSH " + newTotal + ".00");
                                     multip=false;
                                     multipleAccept=false;
                                 }
@@ -481,7 +498,7 @@ public class PointOfSale extends JFrame {
                         //ActionListener that handles productsearch exit
                         final ActionListener ext= new ActionListener() {
                             public void actionPerformed(ActionEvent ae) {
-                                f.setVisible(false);
+                                f.dispose();
                             }
                         };
 
@@ -491,7 +508,7 @@ public class PointOfSale extends JFrame {
                         final ActionListener ext1= new ActionListener() {
                             public void actionPerformed(ActionEvent ae) {
                                 tableModel.disconnectFromDatabase();
-                                f.setVisible(false);
+                                f.dispose();
                             }
                         };
 
@@ -528,7 +545,7 @@ public class PointOfSale extends JFrame {
             ActionListener payment = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     try {
-                        Integer newTotal=0;
+                        float newTotal=0;
                         for (int i=0;i<productCodes.size();i++){
                             newTotal=newTotal+productPrices.get(i)*productQuantities.get(i);
                         }
@@ -558,103 +575,92 @@ public class PointOfSale extends JFrame {
                             }
                             if (Integer.parseInt(commit.trim()) >= newTotal) {
                                 int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this transaction?");
-                                if (confirm == JOptionPane.YES_OPTION) {
+                                if (confirm == JOptionPane.YES_OPTION)
+                                {
+                                    //save individual receipt and total
+                                    IncomeEntity incomeEntity =new IncomeEntity();
+                                    incomeEntity.setReceiptNumber(receiptString);
+                                    incomeEntity.setRunDate(runDateActual);
+                                    incomeEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
+                                    incomeEntity.setZedClear(false);
+                                    incomeEntity.setCreditStatus(1);
+                                    incomeEntity.setTillId(TILL_ID);
+                                    incomeEntity.setUserId(userEntity.getId());
+                                    incomeEntity.setCreditStatus(1);
 
-                                    Integer prof=0;
-                                    for (int i = 0; i < productNames.size(); i++) {
-                                        //save products and quantities to sales table
-                                        SaleEntity saleEntity = new SaleEntity();
-                                        saleEntity.setUnitsSold(productQuantities.get(i));
-                                        saleEntity.setPricePerUnit(productPrices.get(i));
-                                        saleEntity.setDateOfSale(new java.sql.Date(System.currentTimeMillis()));
-                                        saleEntity.setRunDate(runDateActual);
-                                        saleEntity.setReceiptNumber(receiptString);
-                                        saleEntity.setStockId(productCodes.get(i));
+                                    Integer rid = new Random().nextInt();
+                                    incomeEntity.setRid(rid);
+
+                                    receiptService.saveMyReceipt(incomeEntity);
+
+                                    float prof=0;
+                                    for (int i = 0; i < productNames.size(); i++)
+                                    {
+                                        //save products and quantities to income_items table
+                                        IncomeItemsEntity incomeItemsEntity = new IncomeItemsEntity();
+                                        incomeItemsEntity.setUnitsSold(productQuantities.get(i));
+                                        incomeItemsEntity.setReceiptNumber(rid);
+                                        incomeItemsEntity.setUnit_cost(productPrices.get(i));
+                                        incomeItemsEntity.setStockId(productCodes.get(i));
                                         Random random = new Random();
-                                        saleEntity.setSaleId(random.nextInt());
-                                        saleEntity.setTillId(TILL_ID);
-                                        saleEntity.setUserId(userEntity.getUserId());
-                                        saleEntity.setZedClear(false);
-                                        saleEntity.setProfit(profits.get(i));
-                                        prof+=profits.get(i);
-                                        saleService.saveMySale(saleEntity);
+                                        incomeItemsEntity.setSaleId(random.nextInt());
+                                        incomeItemsEntity.setZedClear(false);
+                                        incomeItemsEntity.setProfit(profits.get(i));
+                                        incomeItemsEntity.setT_tax(taxes.get(i) * productQuantities.get(i));
+                                        incomeItemsEntity.setTotal(productPrices.get(i) * productQuantities.get(i));
+                                        prof += profits.get(i);
+                                        saleService.saveMySale(incomeItemsEntity);
 
                                         //update the stock table(decrement quantities
                                         StockEntity stockEntity=product.getMyStock(productCodes.get(i));
-                                        String productCode=stockEntity.getProductCode();
-                                        String productName=stockEntity.getProductName();
-                                        Integer reorderLevel=stockEntity.getReorderLevel();
                                         Integer unitsInStock=stockEntity.getUnitsInStock();
-                                        Double marginPercent=stockEntity.getMargin();
-                                        String vatable=stockEntity.getVatable();
-                                        String percentOrMargin=stockEntity.getMarginOrPercent();
-                                        Integer packing=stockEntity.getPacking();
-                                        Integer buyingPrice=stockEntity.getBuyingPricePerUnit();
-                                        Integer sellingPrice=stockEntity.getSellingPricePerUnit();
-                                        Integer supplierId=stockEntity.getSupplierId();
-                                        Double vatAmt=stockEntity.getVatAmount();
-
-                                        stockEntity.setProductCode(productCode);
-                                        stockEntity.setProductName(productName);
-                                        stockEntity.setBuyingPricePerUnit(buyingPrice);
-                                        stockEntity.setSellingPricePerUnit(sellingPrice);
-                                        stockEntity.setReorderLevel(reorderLevel);
-                                        stockEntity.setSupplierId(supplierId);
                                         stockEntity.setUnitsInStock(unitsInStock - productQuantities.get(i));
-                                        stockEntity.setVatAmount(vatAmt);
-                                        stockEntity.setMargin(marginPercent);
-                                        stockEntity.setMarginOrPercent(percentOrMargin);
-                                        stockEntity.setActualMargin(sellingPrice - buyingPrice);
-                                        stockEntity.setVatable(vatable);
-                                        stockEntity.setPacking(packing);
 
                                         product.updateMyStock(stockEntity);
-                                    }
-                                    //save individual receipt and total(required creation of receipts table)
-                                    ReceiptEntity receiptEntity=new ReceiptEntity();
-                                    receiptEntity.setReceiptNumber(receiptString);
-                                    receiptEntity.setRunDate(runDateActual);
-                                    receiptEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
-                                    receiptEntity.setReceiptTotal(newTotal);
-                                    receiptEntity.setZedClear(false);
-                                    receiptEntity.setCreditStatus("NO CREDIT");
-                                    receiptEntity.setTillId(TILL_ID);
-                                    Random r=new Random();
-                                    receiptEntity.setRid(r.nextInt());
 
-                                    receiptService.saveMyReceipt(receiptEntity);
+                                        //save to accounts
+                                        AccountsPostingsEntity credit_post = new AccountsPostingsEntity();
+                                        credit_post.setDebit(0);
+                                        credit_post.setCredit(productPrices.get(i) * productQuantities.get(i));
+                                        credit_post.setCurrency("KSH");
+                                        credit_post.setDescription("Credit Stock via Receipt Number " + receiptString);
+                                        for (OrgChartEntity org :chartService.getMyAccountByNumber(productCodes.get(i))) {
+                                            credit_post.setAccountId(org.getId());
+                                            break;
+                                        }
+                                        credit_post.setDate(new java.sql.Date(System.currentTimeMillis()));
+
+                                        postingService.saveMyPosting(credit_post);
+
+                                        AccountsPostingsEntity debit_post = new AccountsPostingsEntity();
+                                        debit_post.setDebit(productPrices.get(i) * productQuantities.get(i));
+                                        debit_post.setCredit(0);
+                                        debit_post.setCurrency("KSH");
+                                        debit_post.setDescription("Incoming Cash for Receipt Number " + receiptString);
+                                        debit_post.setAccountId(1);
+                                        debit_post.setDate(new java.sql.Date(System.currentTimeMillis()));
+
+                                        postingService.saveMyPosting(debit_post);
+                                    }
+
 
                                     //update the runDate table(customer count and sales)
-                                    RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                                    Integer payments = getRunDateValues.getCashPayments();
-                                    Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                                    Integer sales = getRunDateValues.getSales();
-                                    Integer manualCash = getRunDateValues.getManualCashEntry();
-                                    Integer customerCountPrevious = getRunDateValues.getCustomerCount();
-                                    Integer profit=getRunDateValues.getProfits();
-                                    Integer till=getRunDateValues.getTillId();
-                                    Integer uid=getRunDateValues.getUserId();
+                                    RunDateTableEntity setRunDateValues = runDateService.getMyRunDate(runDateId);
+                                    float sales = setRunDateValues.getSales();
+                                    Integer customerCountPrevious = setRunDateValues.getCustomerCount();
+                                    float profit = setRunDateValues.getProfits();
 
-                                    RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                                    setNewRunDateValues.setRunDate(runDateActual);
-                                    setNewRunDateValues.setActiveStatus(true);
-                                    setNewRunDateValues.setCashPayments(payments);
-                                    setNewRunDateValues.setPettyCashPayments(pettyCash);
-                                    setNewRunDateValues.setManualCashEntry(manualCash);
-                                    setNewRunDateValues.setSales(sales + newTotal);
-                                    setNewRunDateValues.setProfits(profit + prof);
-                                    setNewRunDateValues.setTillId(till);
-                                    setNewRunDateValues.setCustomerCount(customerCountPrevious + 1);
-                                    setNewRunDateValues.setUserId(uid);
+                                    setRunDateValues.setSales(sales + newTotal);
+                                    setRunDateValues.setProfits(profit + prof);
+                                    setRunDateValues.setCustomerCount(customerCountPrevious + 1);
 
-                                    runDateService.updateMyRunDate(setNewRunDateValues);
+                                    runDateService.updateMyRunDate(setRunDateValues);
 
-                                    /*printReceipt.setReceiptParams(receiptString, productNames, productCodes, productQuantities,
-                                            productPrices, newTotal, commit, userEntity.getUserName());*/
                                     printerService.printReceipt(receiptString, productNames, productCodes, productQuantities,
-                                            productPrices, newTotal, commit, userEntity.getUserName());
+                                            productPrices, newTotal, commit, userEntity.getUsername());
+
                                     //calculate customer change
-                                    change = Integer.parseInt(commit.trim()) - newTotal;
+                                    change = Float.parseFloat(commit.trim()) - newTotal;
                                     JLabel changeLabel = new JLabel("Change:Ksh " + change + ".00");
                                     changeLabel.setPreferredSize(new Dimension(100, 100));
 
@@ -730,8 +736,6 @@ public class PointOfSale extends JFrame {
             ActionListener cashPayment = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     try {
-                        JComboBox supplierCombo = new JComboBox(supplierList.toArray());
-                        supplierCombo.setBackground(Color.yellow);
                         final JComponent[] a = new JComponent[]{new JLabel("Supplier Name:"),
                                 supplierCombo, new JLabel("Enter Cash")};
                         String cash = JOptionPane.showInputDialog(null, a, "Cash Payment", JOptionPane.PLAIN_MESSAGE);
@@ -743,7 +747,7 @@ public class PointOfSale extends JFrame {
                             try{
                                 CashPaymentEntity cashInsert=new CashPaymentEntity();
                                 cashInsert.setTillId(TILL_ID);
-                                cashInsert.setUserId(userEntity.getUserId());
+                                cashInsert.setUserId(userEntity.getId());
                                 cashInsert.setZedClear(false);
                                 cashInsert.setRunDate(runDateActual);
                                 cashInsert.setAmountPaid(Integer.parseInt(cash.trim()));
@@ -755,24 +759,13 @@ public class PointOfSale extends JFrame {
                                 cashPaymentService.saveMyCashPayment(cashInsert);
 
                                 //save to run date table
-                                RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                                Integer payments = getRunDateValues.getCashPayments();
-                                Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                                Integer sales = getRunDateValues.getSales();
-                                Integer manualCash = getRunDateValues.getManualCashEntry();
-                                Integer customerCount = getRunDateValues.getCustomerCount();
+                                RunDateTableEntity replace = runDateService.getMyRunDate(runDateId);
+                                float payments = replace.getCashPayments();
+                                replace.setCashPayments(payments + Integer.parseInt(cash.trim()));
 
-                                RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                                setNewRunDateValues.setRunDate(runDateActual);
-                                setNewRunDateValues.setActiveStatus(true);
-                                setNewRunDateValues.setCashPayments(payments + Integer.parseInt(cash.trim()));
-                                setNewRunDateValues.setPettyCashPayments(pettyCash);
-                                setNewRunDateValues.setManualCashEntry(manualCash);
-                                setNewRunDateValues.setSales(sales);
-                                setNewRunDateValues.setCustomerCount(customerCount);
+                                runDateService.updateMyRunDate(replace);
 
-                                runDateService.updateMyRunDate(setNewRunDateValues);
-                                printerService.printCashPayment(sup,Integer.parseInt(cash.trim()),userEntity.getUserName(),runDateActual);
+                                printerService.printCashPayment(sup,Integer.parseInt(cash.trim()),userEntity.getUsername(),runDateActual);
                                 JOptionPane.showMessageDialog(null,"payment saved successfully");
                             }
                             catch (NumberFormatException nfe){
@@ -803,7 +796,7 @@ public class PointOfSale extends JFrame {
                             try{
                                 PettyCashPaymentEntity cashInsert = new PettyCashPaymentEntity();
                                 cashInsert.setTillId(TILL_ID);
-                                cashInsert.setUserId(userEntity.getUserId());
+                                cashInsert.setUserId(userEntity.getId());
                                 cashInsert.setZedClear(false);
                                 cashInsert.setRunDate(runDateActual);
                                 cashInsert.setAmountPaid(Integer.parseInt(amount.getText().trim()));
@@ -815,24 +808,12 @@ public class PointOfSale extends JFrame {
                                 pettyCashPaymentService.saveMyPettyCashPayment(cashInsert);
 
                                 //save to run date table
-                                RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                                Integer payments = getRunDateValues.getCashPayments();
-                                Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                                Integer sales = getRunDateValues.getSales();
-                                Integer manualCash = getRunDateValues.getManualCashEntry();
-                                Integer customerCount = getRunDateValues.getCustomerCount();
+                                RunDateTableEntity replace = runDateService.getMyRunDate(runDateId);
+                                float pettyCash = replace.getPettyCashPayments();
+                                replace.setPettyCashPayments(pettyCash+Integer.parseInt(amount.getText().trim()));
 
-                                RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                                setNewRunDateValues.setRunDate(runDateActual);
-                                setNewRunDateValues.setActiveStatus(true);
-                                setNewRunDateValues.setCashPayments(payments);
-                                setNewRunDateValues.setPettyCashPayments(pettyCash+Integer.parseInt(amount.getText().trim()));
-                                setNewRunDateValues.setManualCashEntry(manualCash);
-                                setNewRunDateValues.setSales(sales);
-                                setNewRunDateValues.setCustomerCount(customerCount);
-
-                                runDateService.updateMyRunDate(setNewRunDateValues);
-                                printerService.printPettyCashPayment(payee.getText(), Integer.parseInt(amount.getText().trim()),userEntity.getUserName(),runDateActual);
+                                runDateService.updateMyRunDate(replace);
+                                printerService.printPettyCashPayment(payee.getText(), Integer.parseInt(amount.getText().trim()),userEntity.getUsername(),runDateActual);
                                 JOptionPane.showMessageDialog(null, "petty cash payment saved successfully");
                             }
                             catch (NumberFormatException nfe){
@@ -874,6 +855,7 @@ public class PointOfSale extends JFrame {
                                 productQuantities.remove(j);
                                 productNames.remove(j);
                                 profits.remove(j);
+                                taxes.remove(j);
                                 table.createDefaultColumnsFromModel();
                                 table.getColumnModel().getColumn(0).setPreferredWidth(250);
                                 table.getColumnModel().getColumn(1).setPreferredWidth(500);
@@ -882,11 +864,11 @@ public class PointOfSale extends JFrame {
                                 table.getColumnModel().getColumn(4).setPreferredWidth(180);
                                 table.setValueAt("", row, 0);
                                 table.editCellAt(row, 0);
-                                Integer newTotal = 0;
+                                float newTotal = 0;
                                 for (int i = 0; i < productCodes.size(); i++) {
                                     newTotal = newTotal + productPrices.get(i) * productQuantities.get(i);
                                 }
-                                area.setText("Total\nKSH " + newTotal.toString() + ".00");
+                                area.setText("Total\nKSH " + newTotal + ".00");
                             }
                             else {
                                 if (multip==true)
@@ -918,7 +900,7 @@ public class PointOfSale extends JFrame {
             ActionListener credit = new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     try {
-                        Integer newTotal=0;
+                        float newTotal=0;
                         for (int i=0;i<productCodes.size();i++){
                             newTotal=newTotal+productPrices.get(i)*productQuantities.get(i);
                         }
@@ -946,99 +928,90 @@ public class PointOfSale extends JFrame {
                             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to save this as a transaction on credit?");
                             if (confirm == JOptionPane.YES_OPTION) {
 
-                                Integer prof=0;
-                                for (int i = 0; i < productNames.size(); i++) {
-                                    //save products and quantities to sales table
-                                    SaleEntity saleEntity = new SaleEntity();
-                                    saleEntity.setUnitsSold(productQuantities.get(i));
-                                    saleEntity.setPricePerUnit(productPrices.get(i));
-                                    saleEntity.setDateOfSale(new java.sql.Date(System.currentTimeMillis()));
-                                    saleEntity.setRunDate(runDateActual);
-                                    saleEntity.setReceiptNumber(receiptString.trim());
-                                    saleEntity.setStockId(productCodes.get(i));
+                                //save individual receipt and total
+                                IncomeEntity incomeEntity =new IncomeEntity();
+                                incomeEntity.setReceiptNumber(receiptString);
+                                incomeEntity.setRunDate(runDateActual);
+                                incomeEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
+                                incomeEntity.setZedClear(false);
+                                incomeEntity.setCreditStatus(1);
+                                incomeEntity.setTillId(TILL_ID);
+                                incomeEntity.setUserId(userEntity.getId());
+                                incomeEntity.setCreditStatus(0);
+
+                                Integer rid = new Random().nextInt();
+                                incomeEntity.setRid(rid);
+
+                                receiptService.saveMyReceipt(incomeEntity);
+
+                                float prof=0;
+                                for (int i = 0; i < productNames.size(); i++)
+                                {
+                                    //save products and quantities to income_items table
+                                    IncomeItemsEntity incomeItemsEntity = new IncomeItemsEntity();
+                                    incomeItemsEntity.setUnitsSold(productQuantities.get(i));
+                                    incomeItemsEntity.setReceiptNumber(rid);
+                                    incomeItemsEntity.setUnit_cost(productPrices.get(i));
+                                    incomeItemsEntity.setStockId(productCodes.get(i));
                                     Random random = new Random();
-                                    saleEntity.setSaleId(random.nextInt());
-                                    saleEntity.setTillId(TILL_ID);
-                                    saleEntity.setUserId(userEntity.getUserId());
-                                    saleEntity.setZedClear(false);
-                                    saleEntity.setProfit(profits.get(i));
-                                    prof+=profits.get(i);
-                                    saleService.saveMySale(saleEntity);
+                                    incomeItemsEntity.setSaleId(random.nextInt());
+                                    incomeItemsEntity.setZedClear(false);
+                                    incomeItemsEntity.setProfit(profits.get(i));
+                                    incomeItemsEntity.setT_tax(taxes.get(i) * productQuantities.get(i));
+                                    incomeItemsEntity.setTotal(productPrices.get(i) * productQuantities.get(i));
+                                    prof += profits.get(i);
+                                    saleService.saveMySale(incomeItemsEntity);
 
                                     //update the stock table(decrement quantities
                                     StockEntity stockEntity=product.getMyStock(productCodes.get(i));
-                                    String productCode=stockEntity.getProductCode();
-                                    String productName=stockEntity.getProductName();
-                                    Integer reorderLevel=stockEntity.getReorderLevel();
                                     Integer unitsInStock=stockEntity.getUnitsInStock();
-                                    Double marginPercent=stockEntity.getMargin();
-                                    String vatable=stockEntity.getVatable();
-                                    String percentOrMargin=stockEntity.getMarginOrPercent();
-                                    Integer packing=stockEntity.getPacking();
-                                    Integer buyingPrice=stockEntity.getBuyingPricePerUnit();
-                                    Integer sellingPrice=stockEntity.getSellingPricePerUnit();
-                                    Integer supplierId=stockEntity.getSupplierId();
-                                    Double vatAmt=stockEntity.getVatAmount();
-
-                                    stockEntity.setProductCode(productCode);
-                                    stockEntity.setProductName(productName);
-                                    stockEntity.setBuyingPricePerUnit(buyingPrice);
-                                    stockEntity.setSellingPricePerUnit(sellingPrice);
-                                    stockEntity.setReorderLevel(reorderLevel);
-                                    stockEntity.setSupplierId(supplierId);
                                     stockEntity.setUnitsInStock(unitsInStock - productQuantities.get(i));
-                                    stockEntity.setVatAmount(vatAmt);
-                                    stockEntity.setMargin(marginPercent);
-                                    stockEntity.setMarginOrPercent(percentOrMargin);
-                                    stockEntity.setActualMargin(sellingPrice - buyingPrice);
-                                    stockEntity.setVatable(vatable);
-                                    stockEntity.setPacking(packing);
 
                                     product.updateMyStock(stockEntity);
-                                }
-                                //save individual receipt and total(required creation of receipts table)
-                                ReceiptEntity receiptEntity=new ReceiptEntity();
-                                receiptEntity.setReceiptNumber(receiptString);
-                                receiptEntity.setRunDate(runDateActual);
-                                receiptEntity.setActualDate(new Timestamp(System.currentTimeMillis()));
-                                receiptEntity.setReceiptTotal(newTotal);
-                                receiptEntity.setZedClear(false);
-                                receiptEntity.setCreditStatus("CREDIT");
-                                receiptEntity.setTillId(TILL_ID);
-                                Random r=new Random();
-                                receiptEntity.setRid(r.nextInt());
 
-                                receiptService.saveMyReceipt(receiptEntity);
+                                    //save to accounts
+                                    AccountsPostingsEntity credit_post = new AccountsPostingsEntity();
+                                    credit_post.setDebit(0);
+                                    credit_post.setCredit(productPrices.get(i) * productQuantities.get(i));
+                                    credit_post.setCurrency("KSH");
+                                    credit_post.setDescription("Credit Stock via Receipt Number " + receiptString);
+                                    for (OrgChartEntity org :chartService.getMyAccountByNumber(productCodes.get(i))) {
+                                        credit_post.setAccountId(org.getId());
+                                        break;
+                                    }
+                                    credit_post.setDate(new java.sql.Date(System.currentTimeMillis()));
+
+                                    postingService.saveMyPosting(credit_post);
+
+                                    AccountsPostingsEntity debit_post = new AccountsPostingsEntity();
+                                    debit_post.setDebit(productPrices.get(i) * productQuantities.get(i));
+                                    debit_post.setCredit(0);
+                                    debit_post.setCurrency("KSH");
+                                    debit_post.setDescription("Debt for Receipt Number " + receiptString);
+                                    for (OrgChartEntity org :chartService.getMyAccountByNumber(1002020000)) {
+                                        debit_post.setAccountId(org.getId());
+                                        break;
+                                    }
+                                    debit_post.setDate(new java.sql.Date(System.currentTimeMillis()));
+
+                                    postingService.saveMyPosting(debit_post);
+                                }
+
 
                                 //update the runDate table(customer count and sales)
-                                RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                                Integer payments = getRunDateValues.getCashPayments();
-                                Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                                Integer credit_sales = getRunDateValues.getCreditSales();
-                                Integer manualCash = getRunDateValues.getManualCashEntry();
-                                Integer customerCountPrevious = getRunDateValues.getCustomerCount();
-                                Integer profit=getRunDateValues.getProfits();
-                                Integer till=getRunDateValues.getTillId();
-                                Integer uid=getRunDateValues.getUserId();
+                                RunDateTableEntity setRunDateValues = runDateService.getMyRunDate(runDateId);
+                                float sales = setRunDateValues.getSales();
+                                Integer customerCountPrevious = setRunDateValues.getCustomerCount();
+                                float profit = setRunDateValues.getProfits();
 
-                                RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                                setNewRunDateValues.setRunDate(runDateActual);
-                                setNewRunDateValues.setActiveStatus(true);
-                                setNewRunDateValues.setCashPayments(payments);
-                                setNewRunDateValues.setPettyCashPayments(pettyCash);
-                                setNewRunDateValues.setManualCashEntry(manualCash);
-                                setNewRunDateValues.setCreditSales(credit_sales + newTotal);
-                                setNewRunDateValues.setProfits(profit + prof);
-                                setNewRunDateValues.setTillId(till);
-                                setNewRunDateValues.setCustomerCount(customerCountPrevious + 1);
-                                setNewRunDateValues.setUserId(uid);
+                                setRunDateValues.setSales(sales + newTotal);
+                                setRunDateValues.setProfits(profit + prof);
+                                setRunDateValues.setCustomerCount(customerCountPrevious + 1);
 
-                                runDateService.updateMyRunDate(setNewRunDateValues);
+                                runDateService.updateMyRunDate(setRunDateValues);
 
-                                /*printReceipt.setReceiptParams(receiptString, productNames, productCodes, productQuantities,
-                                        productPrices, newTotal, "0", userEntity.getUserName());*/
                                 printerService.printReceipt(receiptString, productNames, productCodes, productQuantities,
-                                        productPrices, newTotal, "0", userEntity.getUserName());
+                                        productPrices, newTotal, "0", userEntity.getUsername());
 
                                 JOptionPane.showMessageDialog(null,"Transaction saved under credit transactions");
 
@@ -1065,6 +1038,7 @@ public class PointOfSale extends JFrame {
                                 productNames.clear();
                                 productQuantities.clear();
                                 productCodes.clear();
+                                taxes.clear();
                                 profits.clear();
                                 area.setText("Total\nKSH 0.00");
                                 table.createDefaultColumnsFromModel();
@@ -1094,8 +1068,19 @@ public class PointOfSale extends JFrame {
             KeyStroke ksCr = KeyStroke.getKeyStroke(KeyEvent.VK_ALT, 0, true);
             table.registerKeyboardAction(credit, ksCr, JComponent.WHEN_IN_FOCUSED_WINDOW);
 
+            try {
+                supplierCombo.addActionListener (new ActionListener () {
+                    public void actionPerformed(ActionEvent e) {
+                        JOptionPane.showMessageDialog(null,"yolo");
+                    }
+                });
+            }
+            catch (NullPointerException npe){
+
+            }
+
         } catch (Exception ex) {
-            System.out.print(ex.getLocalizedMessage());
+            ex.printStackTrace();
         }
     }
 

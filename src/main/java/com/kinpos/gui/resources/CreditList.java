@@ -4,9 +4,7 @@ import com.kinpos.dao.SaleDAO;
 import com.kinpos.dao.StockDAO;
 import com.kinpos.dao.hibernate.HibernateSaleDAO;
 import com.kinpos.dao.hibernate.HibernateStockDAO;
-import com.kinpos.gui.PointOfSale;
-import com.kinpos.models.SaleEntity;
-import com.kinpos.models.StockEntity;
+import com.kinpos.models.IncomeItemsEntity;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
@@ -16,7 +14,6 @@ import java.awt.event.*;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
 
@@ -30,8 +27,8 @@ public class CreditList extends JFrame {
     static final String USERNAME = DB_USER;
     static final String PASSWORD = DB_PASSWORD;
     // default query retrieves all data from stock table
-    static final String DEFAULT_QUERY = "SELECT runDate,actualDate,receiptNumber ," +
-            "receiptTotal  from receipt where credit_status='CREDIT'";
+    static final String DEFAULT_QUERY = "SELECT runDate,actualDate,receiptNumber " +
+            "from income where paid=0";
     private ResultSetTableModel tableModel;
     private JTable resultTable;
     public final SaleDAO saleService=new HibernateSaleDAO();
@@ -87,7 +84,7 @@ public class CreditList extends JFrame {
                     }
                     java.sql.Date runDate = new java.sql.Date(date.getTime());
 
-                    List<SaleEntity> creditItems= saleService.getCreditSalesByReceipt(receiptNumber,runDate);
+                    List<IncomeItemsEntity> creditItems= saleService.getCreditSalesByReceipt(receiptNumber,runDate);
 
 
                     JPanel panelChange=new JPanel();
@@ -97,11 +94,11 @@ public class CreditList extends JFrame {
                     JTable table=new JTable(creditItems.size(),4);
 
                     int row=0;
-                    for (SaleEntity saleEntity:creditItems) {
+                    for (IncomeItemsEntity saleEntity:creditItems) {
                         table.setValueAt(stockService.getMyStock(saleEntity.getStockId()).getProductName(),row,0);
                         table.setValueAt(saleEntity.getUnitsSold(),row,1);
-                        table.setValueAt(saleEntity.getPricePerUnit(),row,2);
-                        table.setValueAt(saleEntity.getPricePerUnit()*saleEntity.getUnitsSold(),row,3);
+                        table.setValueAt(saleEntity.getUnit_cost(),row,2);
+                        table.setValueAt(saleEntity.getUnit_cost()*saleEntity.getUnitsSold(),row,3);
                         row++;
                         /*area.append(stockService.getMyStock(saleEntity.getStockId()).getProductName()+"   "+ saleEntity.getUnitsSold()+
                                 "  "+ saleEntity.getPricePerUnit()+ "  "+

@@ -1,6 +1,6 @@
 package com.kinpos.dao;
 
-import com.kinpos.models.ReceiptEntity;
+import com.kinpos.models.IncomeEntity;
 
 import java.util.List;
 
@@ -8,13 +8,15 @@ import java.util.List;
  * Created by kinyua on 6/19/15.
  */
 public interface ReceiptDAO {
-    List<ReceiptEntity> getAllMyReceipts();
+    List<IncomeEntity> getAllMyReceipts();
 
-    ReceiptEntity getMyReceipt(Integer myReceiptEntityId);
+    List<IncomeEntity> getAllMyUnclearedReceipts();
 
-    ReceiptEntity saveMyReceipt(ReceiptEntity receiptEntity);
+    IncomeEntity getMyReceipt(Integer myReceiptEntityId);
 
-    ReceiptEntity updateMyReceipt(ReceiptEntity receiptEntity);
+    IncomeEntity saveMyReceipt(IncomeEntity incomeEntity);
 
-    void purgeMyReceipt(ReceiptEntity receiptEntity);
+    IncomeEntity updateMyReceipt(IncomeEntity incomeEntity);
+
+    void purgeMyReceipt(IncomeEntity incomeEntity);
 }

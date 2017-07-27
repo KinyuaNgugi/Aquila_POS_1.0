@@ -6,14 +6,15 @@ import javax.persistence.*;
  * Created by kinyua on 9/6/15.
  */
 @Entity
-@Table(name = "supplier", schema = "", catalog = "pos")
+@Table(name = "supplier", schema = "", catalog = "pos2")
 public class SupplierEntity {
     private String supplierName;
     private Integer supplierId;
     private String vatNumber;
     private String kraPin;
     private String phoneNumber;
-    private String methodOfPayment;
+    private String email;
+    private int methodOfPayment;
 
     @Basic
     @Column(name = "supplierName")
@@ -66,12 +67,22 @@ public class SupplierEntity {
     }
 
     @Basic
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Basic
     @Column(name = "methodOfPayment")
-    public String getMethodOfPayment() {
+    public int getMethodOfPayment() {
         return methodOfPayment;
     }
 
-    public void setMethodOfPayment(String methodOfPayment) {
+    public void setMethodOfPayment(int methodOfPayment) {
         this.methodOfPayment = methodOfPayment;
     }
 
@@ -87,8 +98,6 @@ public class SupplierEntity {
         if (vatNumber != null ? !vatNumber.equals(that.vatNumber) : that.vatNumber != null) return false;
         if (kraPin != null ? !kraPin.equals(that.kraPin) : that.kraPin != null) return false;
         if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
-        if (methodOfPayment != null ? !methodOfPayment.equals(that.methodOfPayment) : that.methodOfPayment != null)
-            return false;
 
         return true;
     }
@@ -100,7 +109,6 @@ public class SupplierEntity {
         result = 31 * result + (vatNumber != null ? vatNumber.hashCode() : 0);
         result = 31 * result + (kraPin != null ? kraPin.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (methodOfPayment != null ? methodOfPayment.hashCode() : 0);
         return result;
     }
 }

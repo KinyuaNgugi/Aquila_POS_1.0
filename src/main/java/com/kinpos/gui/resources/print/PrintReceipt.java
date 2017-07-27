@@ -96,12 +96,12 @@ public class PrintReceipt extends JComponent implements Printable {
         Boolean vatAvailable=false;
         for (int i=0;i<productCodes.size();i++){
             StockEntity stockEntity=product.getMyStock(productCodes.get(i));
-            if(stockEntity.getVatable().equals("vatable")){
+            /*if(stockEntity.getVatable().equals("vatable")){
                 vat=vat+(stockEntity.getSellingPricePerUnit().doubleValue()*productQuantities.get(i)*16)/116;
             }
             if (stockEntity.getVatable().equals("unvatable")){
                 vatAvailable=true;
-            }
+            }*/
         }
         if (vat!=0.0){
 

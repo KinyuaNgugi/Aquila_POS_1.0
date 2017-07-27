@@ -56,12 +56,12 @@ public class PrintZed extends JComponent implements Printable {
         return PAGE_EXISTS;
     }
 
-    public void setZedParams(java.sql.Date runDateActual,Integer salesG,Integer tillCollection,
-                             Integer cashPayments,Integer pettyPayments,String authority,Integer customerCount,
+    public void setZedParams(java.sql.Date runDateActual,float salesG,Integer tillCollection,
+                             float cashPayments,float pettyPayments,String authority,Integer customerCount,
                              LinkedList<Integer>cashAmountsPaidTemp,LinkedList<String>supplierNamesTemp,
                              LinkedList<Integer>pettyCashAmountsPaidTemp,LinkedList<String>pettyPayeesTemp) {
         final PrintZed p = new PrintZed();
-        Integer expenses=pettyPayments+cashPayments;
+        float expenses=pettyPayments+cashPayments;
         JTextArea text = new JTextArea(100, 50);
         text.append("\tEDENMART SUPERMARKETS\n");
         text.append("\tZED REPORT\n");
@@ -84,8 +84,8 @@ public class PrintZed extends JComponent implements Printable {
         text.append("\n----------------------------------------------------------------------------------------------------\n");
         text.append("Total Expenses   \t\t"+expenses);
         text.append("\n---------------------------------------------------------------------------------------------------\n");
-        Integer v=(pettyPayments+cashPayments+tillCollection)-salesG;
-        Integer t=pettyPayments+cashPayments+tillCollection;
+        float v=(pettyPayments+cashPayments+tillCollection)-salesG;
+        float t=pettyPayments+cashPayments+tillCollection;
         text.append("Total Sales       \t\t"+t);
         text.append("\n=========================================\n");
         text.append("\t**********Variance*********\n");

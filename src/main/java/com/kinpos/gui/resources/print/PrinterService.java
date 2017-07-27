@@ -3,7 +3,9 @@ package com.kinpos.gui.resources.print;
 /**
  * Created by openworldkin on 1/3/17.
  */
+import com.kinpos.dao.CountryTaxRatesDAO;
 import com.kinpos.dao.StockDAO;
+import com.kinpos.dao.hibernate.HibernateCountryTaxRatesDAO;
 import com.kinpos.dao.hibernate.HibernateStockDAO;
 import com.kinpos.models.StockEntity;
 
@@ -31,7 +33,7 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import static com.kinpos.gui.resources.Constants.TILL_ID;
 public class PrinterService implements Printable
 {
-
+    public final CountryTaxRatesDAO taxService=new HibernateCountryTaxRatesDAO();
     public List<String> getPrinters(){
 
         DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
@@ -135,7 +137,7 @@ public class PrinterService implements Printable
     public void printReceipt(String receiptString,LinkedList<String> productNames,
                                  LinkedList<Integer> productCodes,
                                  LinkedList<Integer> productQuantities,
-                                 LinkedList<Integer> productPrices,Integer newTotal,
+                                 LinkedList<Float> productPrices,float newTotal,
                                  String commit, String userName)
     {
         StockDAO product=new HibernateStockDAO();
@@ -157,7 +159,7 @@ public class PrinterService implements Printable
         body += "=========================================\n";
         body += "\tTOTAL:\t\t"+newTotal+".00\n";
         body += "\tCASH:\t\t"+commit+".00\n";
-        Integer z=Integer.parseInt(commit)-newTotal;
+        float z=Float.parseFloat(commit)-newTotal;
         body += "\tCHANGE:\t\t"+z+".00\n";
         body += "=========================================\n";
         body += "Served By: "+userName+"\n";
@@ -169,10 +171,10 @@ public class PrinterService implements Printable
         for (int i=0;i<productCodes.size();i++)
         {
             StockEntity stockEntity=product.getMyStock(productCodes.get(i));
-            if(stockEntity.getVatable().equals("vatable")){
-                vat=vat+(stockEntity.getSellingPricePerUnit().doubleValue()*productQuantities.get(i)*16)/116;
+            if(taxService.getMyTaxRate(stockEntity.getVat()).getRate() != 0 ){
+                vat=vat+(stockEntity.getSellingPricePerUnit()*productQuantities.get(i) * taxService.getMyTaxRate(stockEntity.getVat()).getRate() )/(100+taxService.getMyTaxRate(stockEntity.getVat()).getRate()) ;
             }
-            if (stockEntity.getVatable().equals("unvatable")){
+            else {
                 vatAvailable=true;
             }
         }
@@ -203,14 +205,14 @@ public class PrinterService implements Printable
         printBytes("Generic-text-only", cutP);
 
     }
-    public void printZedReport(java.sql.Date runDateActual,Integer salesG,Integer tillCollection,
-                             Integer cashPayments,Integer pettyPayments,String authority,
+    public void printZedReport(java.sql.Date runDateActual,float salesG,Integer tillCollection,
+                             float cashPayments,float pettyPayments,String authority,
                              Integer customerCount, LinkedList<Integer>cashAmountsPaidTemp,
                              LinkedList<String>supplierNamesTemp,
                                LinkedList<Integer>pettyCashAmountsPaidTemp,
                              LinkedList<String>pettyPayeesTemp)
     {
-        Integer expenses=pettyPayments+cashPayments;
+        float expenses=pettyPayments+cashPayments;
 
         String text = "";
         text += "\tEDENMART SUPERMARKETS\n";
@@ -234,8 +236,8 @@ public class PrinterService implements Printable
         text += "\n-----------------------------------------\n" ;
         text += "Total Expenses   \t\t"+expenses ;
         text += "\n-----------------------------------------\n" ;
-        Integer v=(pettyPayments+cashPayments+tillCollection)-salesG;
-        Integer t=pettyPayments+cashPayments+tillCollection;
+        float v=(pettyPayments+cashPayments+tillCollection)-salesG;
+        float t=pettyPayments+cashPayments+tillCollection;
         text += "Total Sales       \t\t"+t ;
         text += "\n=========================================\n" ;
         text += "\t**********Variance*********\n" ;

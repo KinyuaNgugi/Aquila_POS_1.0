@@ -32,7 +32,6 @@ import java.util.List;
 import static com.kinpos.gui.resources.Constants.TILL_ID;
 
 public class FrontEndHome extends JFrame {
-    public final AccountDAO accountService=new HibernateAccountDAO();
     public final RunDateDAO runDateService=new HibernateRunDateDAO();
     public final UserDAO userService=new HibernateUserDAO();
     public final SaleDAO saleService=new HibernateSaleDAO();
@@ -44,15 +43,20 @@ public class FrontEndHome extends JFrame {
     public final PrintZed printZed=new PrintZed();
     public final PrinterService printerService = new PrinterService();
     private CreditList creditList = new CreditList();
-    java.sql.Date runDateActual;
-    Integer runDateId;
-    Integer salesG;Integer tillCollection;Integer pettyPayments;Integer cashPayments;
-    List<String>userList=new LinkedList<String>();
-    UserEntity userEntity;
-    String authority;
-    int uidKesho;
-    int customerCount;
-    public FrontEndHome(final UserEntity user1) {
+    private java.sql.Date runDateActual;
+    private Integer runDateId;
+    private float salesG;
+    private Integer tillCollection;
+    private float pettyPayments;
+    private float cashPayments;
+    private List<String>userList=new LinkedList<String>();
+    private UserEntity userEntity;
+    private String authority;
+    private int uidKesho;
+    private int customerCount;
+
+    public FrontEndHome(final UserEntity user1)
+    {
         final JFrame frame = new JFrame("Aquila 1.0");
         //get run date
         List<RunDateTableEntity> runDates = runDateService.getMyActiveRunDate();
@@ -69,8 +73,8 @@ public class FrontEndHome extends JFrame {
         //get all users
         final List<UserEntity> userEntityList=userService.getAllMyUsers();
         for(UserEntity user:userEntityList){
-            if (user.getOperationStatus())
-            userList.add(user.getUserName());
+            if (user.getStatus() == 1)
+            userList.add(user.getUsername());
         }
 
         JMenu salesMenu = new JMenu("POS"); // create purchases menu
@@ -125,33 +129,22 @@ public class FrontEndHome extends JFrame {
                             new JLabel("Total Cash Payments:" + cashPayments), new JLabel("Total Petty Cash Payments:" + pettyPayments),
                             new JLabel("Enter Till Collection:")};
                     String collection = JOptionPane.showInputDialog(null, a, "Payment", JOptionPane.PLAIN_MESSAGE);
-                    if (collection.isEmpty()) {
+                    if (collection.isEmpty())
+                    {
                         collection = JOptionPane.showInputDialog(null, a, "Payment", JOptionPane.PLAIN_MESSAGE);
-                    } else {
+                    }
+                    else
+                    {
                         //update the runDate table(customer count and sales)
-                        RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                        Integer payments = getRunDateValues.getCashPayments();
-                        Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                        Integer sales = getRunDateValues.getSales();
-                        Integer customerCount = getRunDateValues.getCustomerCount();
-                        Integer profits = getRunDateValues.getProfits();
-                        Integer till = getRunDateValues.getTillId();
+                        RunDateTableEntity replace = runDateService.getMyRunDate(runDateId);
+                        replace.setManualCashEntry(Integer.parseInt(collection));
 
-                        RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                        setNewRunDateValues.setRunDate(runDateActual);
-                        setNewRunDateValues.setActiveStatus(true);
-                        setNewRunDateValues.setCashPayments(payments);
-                        setNewRunDateValues.setPettyCashPayments(pettyCash);
-                        setNewRunDateValues.setManualCashEntry(Integer.parseInt(collection));
-                        setNewRunDateValues.setSales(sales);
-                        setNewRunDateValues.setProfits(profits);
-                        setNewRunDateValues.setCustomerCount(customerCount);
-                        setNewRunDateValues.setTillId(till);
-
-                        runDateService.updateMyRunDate(setNewRunDateValues);
+                        runDateService.updateMyRunDate(replace);
                         JOptionPane.showMessageDialog(null, "Till Collection Saved");
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex)
+                {
 
                 }
             }
@@ -159,8 +152,10 @@ public class FrontEndHome extends JFrame {
 
         zed.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                Integer vatableTotal = 0;
-                Integer unvatableTotal = 0;
+                float vatableTotal = 0;
+                float unvatableTotal = 0;
+                float cash_sales = 0;
+                float credit_sales = 0;
                 JComboBox usersCombo = new JComboBox(userList.toArray());
                 JPasswordField passwordField = new JPasswordField(15);
                 JLabel label = new JLabel("Enter a password:");
@@ -175,14 +170,17 @@ public class FrontEndHome extends JFrame {
                 int option = JOptionPane.showOptionDialog(null, panel, "The title",
                         JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
                         null, options, options[0]);
-                if (option == 0) {
+                if (option == 0)
+                {
                     List<UserEntity> userEntityL = userService.getMyUserByUserName(usersCombo.getSelectedItem().toString());
                     for (UserEntity u : userEntityL) {
-                        if (passwordField.getText().equals(u.getPassword())) {
-                            authority = u.getUserName();
+                        if (passwordField.getText().equals(u.getPassword()))
+                        {
+                            authority = u.getUsername();
                             JComponent[] c = new JComponent[]{new JLabel("Are You sure You want to do the zed report?")};
                             int yes = JOptionPane.showConfirmDialog(null, c, "Zed Report Verification", JOptionPane.YES_NO_OPTION);
-                            if (yes == JOptionPane.YES_OPTION) {
+                            if (yes == JOptionPane.YES_OPTION)
+                            {
                                 JFrame frame=new JFrame("Processing zed");
                                  
                                 frame.setResizable(false);
@@ -191,48 +189,50 @@ public class FrontEndHome extends JFrame {
                                 frame.add(panel1);
                                 frame.setSize(300, 100);
                                 frame.setVisible(true);
-                                //update the zed clear in sales
-                                Integer unitsSold, userId, tillId, stockId;
-                                String receiptNumber;
-                                Date runDate, dateOfSale;
-                                List<SaleEntity> saleEntities = saleService.getAllMyUnclearedSales();
-                                for (SaleEntity sale : saleEntities)
+
+                                //update zed clear in receipts table
+                                for (IncomeEntity incomeEntity : receiptService.getAllMyUnclearedReceipts())
                                 {
-                                    SaleEntity replace = saleService.getMySale(sale.getSaleId());
-                                    unitsSold = replace.getUnitsSold();
-                                    receiptNumber = replace.getReceiptNumber();
-                                    userId = replace.getUserId();
-                                    tillId = replace.getTillId();
-                                    stockId = replace.getStockId();
-                                    runDate = replace.getRunDate();
-                                    dateOfSale = replace.getDateOfSale();
+                                    IncomeEntity replace =receiptService.getMyReceipt(incomeEntity.getRid());
+                                    replace.setZedClear(true);
 
-                                    SaleEntity replacee = saleService.getMySale(sale.getSaleId());
-                                    replacee.setRunDate(runDate);
-                                    replacee.setUnitsSold(unitsSold);
-                                    replacee.setReceiptNumber(receiptNumber);
-                                    replacee.setUserId(userId);
-                                    replacee.setTillId(tillId);
-                                    replacee.setStockId(stockId);
-                                    replacee.setDateOfSale(dateOfSale);
-                                    replacee.setZedClear(true);
-
-
-                                    saleService.updateMySale(replacee);
-
-                                    //populate the vat table
-                                    try{
-                                        StockEntity stockEntity = stockService.getMyStock(stockId);
-                                        if (stockEntity.getVatable().equals("vatable")) {
-                                            vatableTotal = vatableTotal + unitsSold * stockEntity.getSellingPricePerUnit();
+                                    //vat categorization
+                                    for (IncomeItemsEntity item: saleService.getItemsForReceipt(incomeEntity.getRid()))
+                                    {
+                                        if (item.getT_tax() == 0)
+                                        {
+                                            unvatableTotal = unvatableTotal + item.getTotal();
                                         }
-                                        if (stockEntity.getVatable().equals("unvatable")) {
-                                            unvatableTotal = unvatableTotal + unitsSold * stockEntity.getSellingPricePerUnit();
+                                        else
+                                        {
+                                            vatableTotal = vatableTotal + item.getTotal();
                                         }
                                     }
-                                    catch (NullPointerException npe){
-                                        //JOptionPane.showMessageDialog(null,stockId);
+                                    //cash and credit sale categorization
+                                    if (incomeEntity.getCreditStatus() == 1)
+                                    {
+                                        for (IncomeItemsEntity item: saleService.getItemsForReceipt(incomeEntity.getRid()))
+                                        {
+                                            cash_sales += item.getTotal();
+                                        }
                                     }
+                                    else
+                                    {
+                                        for (IncomeItemsEntity item: saleService.getItemsForReceipt(incomeEntity.getRid()))
+                                        {
+                                            credit_sales += item.getTotal();
+                                        }
+                                    }
+
+                                    receiptService.updateMyReceipt(replace);
+                                }
+                                //update the zed clear in income_items
+                                List<IncomeItemsEntity> saleEntities = saleService.getAllMyUnclearedSales();
+                                for (IncomeItemsEntity sale : saleEntities)
+                                {
+                                    IncomeItemsEntity replace = saleService.getMySale(sale.getSaleId());
+                                    replace.setZedClear(true);
+                                    saleService.updateMySale(replace);
 
                                 }
 
@@ -242,97 +242,36 @@ public class FrontEndHome extends JFrame {
                                 //variables for temporal storage of cash payments before zed is cleared
                                 LinkedList<String> supplierNamesTemp=new LinkedList<String>();
                                 LinkedList<Integer> cashAmountsPaidTemp=new LinkedList<Integer>();
+
                                 //update the zed clear in cash payments
-                                Integer amount, uId, tId, sId;
-                                Date rDate, dateOfPayment;
                                 List<CashPaymentEntity> paymentEntities = cashPaymentService.getTillCashPayments();
                                 for (CashPaymentEntity cash : paymentEntities)
                                 {
                                     CashPaymentEntity replace = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
-                                    amount = replace.getAmountPaid();
-                                    uId = replace.getUserId();
-                                    tId = replace.getTillId();
-                                    sId = replace.getSupplierId();
-                                    rDate = replace.getRunDate();
-                                    dateOfPayment = replace.getDateOfPayment();
 
-                                    //save temporary values
-                                    SupplierEntity supplierEntity=supplierService.getMySupplier(sId);
-                                    supplierNamesTemp.add(supplierEntity.getSupplierName());
-                                    cashAmountsPaidTemp.add(amount);
-
-                                    CashPaymentEntity replacee = cashPaymentService.getMyCashPayment(cash.getCashPaymentId());
-                                    replacee.setAmountPaid(amount);
-                                    replacee.setUserId(uId);
-                                    replacee.setTillId(tId);
-                                    replacee.setSupplierId(sId);
-                                    replacee.setRunDate(rDate);
-
-                                    replacee.setDateOfPayment(dateOfPayment);
-                                    replacee.setZedClear(true);
-
-                                    cashPaymentService.updateMyCashPayment(replacee);
+                                    replace.setZedClear(true);
+                                    cashPaymentService.updateMyCashPayment(replace);
                                 }
+
                                 //variables for temporal storage of cash payments before zed is cleared
                                 LinkedList<String> pettyPayeesTemp=new LinkedList<String>();
                                 LinkedList<Integer> pettyCashAmountsPaidTemp=new LinkedList<Integer>();
 
                                 //update the zed clear in petty cash payments
-                                Integer amt, usId, tlId;
-                                Date rnDate, dop;
-                                String payee;
                                 List<PettyCashPaymentEntity> pettyPaymentEntities = pettyCashPaymentService.getTillPettyCashPayments();
                                 for (PettyCashPaymentEntity petty : pettyPaymentEntities) {
                                     PettyCashPaymentEntity replace = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
-                                    amt = replace.getAmountPaid();
-                                    usId = replace.getUserId();
-                                    tlId = replace.getTillId();
-                                    payee = replace.getPayee();
-                                    rnDate = replace.getRunDate();
-                                    dop = replace.getDateOfPayment();
+                                    replace.setZedClear(true);
 
-                                    //save temporary values
-                                    pettyPayeesTemp.add(payee);
-                                    pettyCashAmountsPaidTemp.add(amt);
-
-                                    PettyCashPaymentEntity replacee = pettyCashPaymentService.getMyPettyCashPayment(petty.getPettyCashPaymentId());
-                                    replacee.setAmountPaid(amt);
-                                    replacee.setUserId(usId);
-                                    replacee.setTillId(tlId);
-                                    replacee.setPayee(payee);
-                                    replacee.setRunDate(rnDate);
-                                    replacee.setDateOfPayment(dop);
-                                    replacee.setZedClear(true);
-
-                                    pettyCashPaymentService.updateMyPettyCashPayment(replacee);
+                                    pettyCashPaymentService.updateMyPettyCashPayment(replace);
                                 }
-                                //update zed clear in receipts table
-                                List<ReceiptEntity> receiptEntities=receiptService.getAllMyReceipts();
-                                 String receiptNo;Date ruDate;Timestamp actualDate;Integer receipTotal;
-                                for (ReceiptEntity receiptEntity:receiptEntities){
-                                    if (!receiptEntity.getZedClear()){
-                                        ReceiptEntity receiptEntity1=receiptService.getMyReceipt(receiptEntity.getRid());
-                                        receiptNo=receiptEntity1.getReceiptNumber();
-                                        ruDate=receiptEntity1.getRunDate();
-                                        actualDate=receiptEntity1.getActualDate();
-                                        receipTotal=receiptEntity1.getReceiptTotal();
 
-                                        ReceiptEntity replacee=receiptService.getMyReceipt(receiptEntity.getRid());
-                                        replacee.setReceiptNumber(receiptNo);
-                                        replacee.setRunDate(ruDate);
-                                        replacee.setActualDate(actualDate);
-                                        replacee.setReceiptTotal(receipTotal);
-                                        replacee.setZedClear(true);
-
-                                        receiptService.updateMyReceipt(replacee);
-
-                                    }
-                                }
 
                                 frame.setVisible(false);
                                 printZed.setZedParams(runDateActual, salesG, tillCollection, cashPayments,
                                         pettyPayments, authority, customerCount,cashAmountsPaidTemp,supplierNamesTemp,
                                         pettyCashAmountsPaidTemp,pettyPayeesTemp);
+
                                 printerService.printZedReport(runDateActual, salesG, tillCollection, cashPayments,
                                         pettyPayments, authority, customerCount,cashAmountsPaidTemp,supplierNamesTemp,
                                         pettyCashAmountsPaidTemp,pettyPayeesTemp);
@@ -355,49 +294,25 @@ public class FrontEndHome extends JFrame {
                                 final JComponent[] d = new JComponent[]{new JLabel("Enter Next Run Date:"), datePicker,
                                         new JLabel("Enter teller to run:"), usersCombo};
                                 int ex = JOptionPane.showConfirmDialog(null, d, "Choose Run Date", JOptionPane.YES_NO_OPTION);
-                                if (ex == JOptionPane.YES_OPTION) {
+                                if (ex == JOptionPane.YES_OPTION)
+                                {
                                     List<UserEntity> userEntities = userService.getMyUserByUserName(usersCombo.getSelectedItem().toString());
-                                    for (UserEntity u1 : userEntities) {
-                                        uidKesho = u1.getUserId();
+                                    for (UserEntity u1 : userEntities)
+                                    {
+                                        uidKesho = u1.getId();
                                     }
                                     Date selectedDate = (Date) datePicker.getModel().getValue();
                                     //tomorrow
-                                    if (!selectedDate.equals(null)){
+                                    if (!selectedDate.equals(null))
+                                    {
                                         //update the runDate table(customer count and sales)
-                                        RunDateTableEntity getRunDateValues = runDateService.getMyRunDate(runDateId);
-                                        Integer payments = getRunDateValues.getCashPayments();
-                                        Integer pettyCash = getRunDateValues.getPettyCashPayments();
-                                        Integer sales = getRunDateValues.getSales();
-                                        Integer manual = getRunDateValues.getManualCashEntry();
-                                        Integer customerCount = getRunDateValues.getCustomerCount();
-                                        Integer profit = getRunDateValues.getProfits();
-                                        Integer till = getRunDateValues.getTillId();
-                                        Integer uid = getRunDateValues.getUserId();
-
-                                        RunDateTableEntity setNewRunDateValues = runDateService.getMyRunDate(runDateId);
-                                        setNewRunDateValues.setRunDate(runDateActual);
-                                        setNewRunDateValues.setActiveStatus(false);
-                                        setNewRunDateValues.setCashPayments(payments);
-                                        setNewRunDateValues.setPettyCashPayments(pettyCash);
-                                        setNewRunDateValues.setManualCashEntry(manual);
-                                        setNewRunDateValues.setSales(sales);
-                                        setNewRunDateValues.setCustomerCount(customerCount);
-                                        setNewRunDateValues.setVatableTotals(vatableTotal);
-                                        setNewRunDateValues.setUnvatableTotals(unvatableTotal);
-                                        setNewRunDateValues.setProfits(profit);
-                                        setNewRunDateValues.setTillId(till);
-                                        setNewRunDateValues.setUserId(uid);
-                                        runDateService.updateMyRunDate(setNewRunDateValues);
-
-                                        //enter manual cash to account table
-                                        AccountEntity accountEntity1 = accountService.getMyRunDate(1);
-                                        Integer currentAccount = accountEntity1.getAmount();
-
-                                        AccountEntity accountEntity = accountService.getMyRunDate(1);
-                                        accountEntity.setRunDate(runDateActual);
-                                        accountEntity.setAmount(manual + currentAccount);
-
-                                        accountService.updateMyRunDate(accountEntity);
+                                        RunDateTableEntity replace = runDateService.getMyRunDate(runDateId);
+                                        replace.setActiveStatus(false);
+                                        replace.setVatableTotals(vatableTotal);
+                                        replace.setUnvatableTotals(unvatableTotal);
+                                        replace.setCredit_sales(credit_sales);
+                                        replace.setCash_sales(cash_sales);
+                                        runDateService.updateMyRunDate(replace);
 
                                         //set rundate for tomorrow
                                         RunDateTableEntity setTomorrowRunDateValues = new RunDateTableEntity();
@@ -411,7 +326,8 @@ public class FrontEndHome extends JFrame {
                                         setTomorrowRunDateValues.setVatableTotals(0);
                                         setTomorrowRunDateValues.setUnvatableTotals(0);
                                         setTomorrowRunDateValues.setProfits(0);
-                                        setTomorrowRunDateValues.setCreditSales(0);
+                                        setTomorrowRunDateValues.setCredit_sales(0);
+                                        setTomorrowRunDateValues.setSales(0);
                                         setTomorrowRunDateValues.setTillId(TILL_ID);
                                         setTomorrowRunDateValues.setZedClear(false);
                                         setTomorrowRunDateValues.setUserId(uidKesho);

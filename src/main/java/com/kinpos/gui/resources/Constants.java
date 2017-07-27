@@ -5,7 +5,7 @@ package com.kinpos.gui.resources;
  */
 public class Constants
 {
-    public static final String DB_HOST_ADDRESS = "jdbc:mysql://localhost/pos";
+    public static final String DB_HOST_ADDRESS = "jdbc:mysql://localhost/pos2";
     public static final String DB_USER = "root";
     public static final String DB_PASSWORD = "paradise";
     public static final Integer TILL_ID = 1;

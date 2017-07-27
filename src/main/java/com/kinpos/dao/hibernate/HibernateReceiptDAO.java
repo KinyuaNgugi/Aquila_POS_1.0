@@ -1,11 +1,12 @@
 package com.kinpos.dao.hibernate;
 
 import com.kinpos.dao.ReceiptDAO;
-import com.kinpos.models.ReceiptEntity;
+import com.kinpos.models.IncomeEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
@@ -16,44 +17,54 @@ public class HibernateReceiptDAO implements ReceiptDAO {
     private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
     @Override
-    public List<ReceiptEntity> getAllMyReceipts() {
+    public List<IncomeEntity> getAllMyReceipts() {
         Session session =sessionFactory.openSession();
-        List<ReceiptEntity> accountEntities=session.createCriteria(ReceiptEntity.class).list();
+        List<IncomeEntity> accountEntities=session.createCriteria(IncomeEntity.class).list();
         session.close();
         return accountEntities;
     }
 
     @Override
-    public ReceiptEntity getMyReceipt(Integer myReceiptEntityId) {
+    public IncomeEntity getMyReceipt(Integer myReceiptEntityId) {
         Session session=sessionFactory.openSession();
-        ReceiptEntity receiptEntity=(ReceiptEntity) session.get(ReceiptEntity.class, myReceiptEntityId);
+        IncomeEntity incomeEntity =(IncomeEntity) session.get(IncomeEntity.class, myReceiptEntityId);
         session.close();
-        return receiptEntity;
+        return incomeEntity;
     }
 
     @Override
-    public void purgeMyReceipt(ReceiptEntity receiptEntity) {
-        sessionFactory.getCurrentSession().delete(receiptEntity);
+    public void purgeMyReceipt(IncomeEntity incomeEntity) {
+        sessionFactory.getCurrentSession().delete(incomeEntity);
     }
 
     @Override
-    public ReceiptEntity saveMyReceipt(ReceiptEntity receiptEntity) {
+    public IncomeEntity saveMyReceipt(IncomeEntity incomeEntity) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(receiptEntity);
+        session.save(incomeEntity);
         tx.commit();
         session.close();
-        return receiptEntity;
+        return incomeEntity;
     }
 
     @Override
-    public ReceiptEntity updateMyReceipt(ReceiptEntity receiptEntity) {
+    public IncomeEntity updateMyReceipt(IncomeEntity incomeEntity) {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.update(receiptEntity);
+        session.update(incomeEntity);
         tx.commit();
         session.close();
-        return receiptEntity;
+        return incomeEntity;
+    }
+
+    @Override
+    public List<IncomeEntity> getAllMyUnclearedReceipts() {
+        Session session=sessionFactory.openSession();
+        Criteria criteria = session.createCriteria(IncomeEntity.class);
+        criteria.add(Restrictions.eq("zedClear", false));
+        List list = criteria.list();
+        session.close();
+        return list;
     }
 
 }

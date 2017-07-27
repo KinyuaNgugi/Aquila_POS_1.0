@@ -5,7 +5,8 @@
       <configuration>
         <datasource-map>
           <unit-entry name="META-INF:hibernate.cfg.xml" value="bb8a7c20-d8fd-41cd-a8b6-0ce5aae05e37" />
-          <unit-entry name="hibernate.cfg.xml" value="bb8a7c20-d8fd-41cd-a8b6-0ce5aae05e37" />
+          <unit-entry name="a.xml" value="04d6b05f-46be-44c2-a6d9-f0407f599a4f" />
+          <unit-entry name="hibernate.cfg.xml" value="04d6b05f-46be-44c2-a6d9-f0407f599a4f" />
           <unit-entry name="src:main:webapp:hibernate.cfg.xml" />
         </datasource-map>
         <naming-strategy-map />
@@ -19,7 +20,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">

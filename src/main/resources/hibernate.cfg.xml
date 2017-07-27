@@ -6,7 +6,7 @@
     <session-factory>
 
         <!--<property name="connection.url">jdbc:mysql://192.168.111.102:3306/pos</property>-->
-        <property name="connection.url">jdbc:mysql://localhost:3306/pos</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/pos2</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
@@ -17,20 +17,19 @@
         <!--<property name="connection.username">kinyua</property>
         <property name="connection.password">paradise</property>-->
 
+        <mapping class="com.kinpos.models.AccountsPostingsEntity"/>
         <mapping class="com.kinpos.models.StockEntity"/>
         <mapping class="com.kinpos.models.RunDateTableEntity"/>
         <mapping class="com.kinpos.models.UserEntity"/>
+        <mapping class="com.kinpos.models.CountryTaxRatesEntity"/>
         <mapping class="com.kinpos.models.PettyCashPaymentEntity"/>
-        <mapping class="com.kinpos.models.SaleEntity"/>
+        <mapping class="com.kinpos.models.IncomeItemsEntity"/>
         <mapping class="com.kinpos.models.SupplierEntity"/>
         <mapping class="com.kinpos.models.CashPaymentEntity"/>
-        <mapping class="com.kinpos.models.NegativeAdjustmentEntity"/>
-        <mapping class="com.kinpos.models.AccountEntity"/>
-        <mapping class="com.kinpos.models.ChequePaymentEntity"/>
         <mapping class="com.kinpos.models.CreateProdLogEntity"/>
         <mapping class="com.kinpos.models.SupplierLogEntity"/>
         <mapping class="com.kinpos.models.StockedenEntity"/>
-        <mapping class="com.kinpos.models.ReceiptEntity"/>
+        <mapping class="com.kinpos.models.IncomeEntity"/>
 
 
         <!-- <mapping resource="com/mkyong/user/DBUser.hbm.xml"></mapping> -->

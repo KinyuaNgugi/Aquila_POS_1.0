@@ -7,33 +7,25 @@ import java.sql.Date;
  * Created by kinyua on 8/4/15.
  */
 @Entity
-@Table(name = "runDateTable", schema = "", catalog = "pos")
+@Table(name = "runDateTable", schema = "", catalog = "pos2")
 public class RunDateTableEntity {
     private Integer runDateId;
     private Date runDate;
-    private Integer sales;
-    private Integer cashPayments;
-    private Integer pettyCashPayments;
+    private float sales;
+    private float cash_sales;
+    private float credit_sales;
+    private float cashPayments;
+    private float pettyCashPayments;
     private Boolean activeStatus;
     private Integer manualCashEntry;
     private Integer customerCount;
-    private Integer vatableTotals;
-    private Integer unvatableTotals;
+    private float vatableTotals;
+    private float unvatableTotals;
     private Boolean zedClear;
-    private Integer profits;
+    private float profits;
     private Integer tillId;
     private Integer userId;
-    private Integer creditSales;
 
-    @Basic
-    @Column(name = "credit_sales")
-    public Integer getCreditSales() {
-        return creditSales;
-    }
-
-    public void setCreditSales(Integer creditSales) {
-        this.creditSales = creditSales;
-    }
 
     @Basic
     @Column(name = "userId")
@@ -65,33 +57,24 @@ public class RunDateTableEntity {
         this.runDate = runDate;
     }
 
-    @Basic
-    @Column(name = "sales")
-    public Integer getSales() {
-        return sales;
-    }
-
-    public void setSales(Integer sales) {
-        this.sales = sales;
-    }
 
     @Basic
     @Column(name = "cashPayments")
-    public Integer getCashPayments() {
+    public float getCashPayments() {
         return cashPayments;
     }
 
-    public void setCashPayments(Integer cashPayments) {
+    public void setCashPayments(float cashPayments) {
         this.cashPayments = cashPayments;
     }
 
     @Basic
     @Column(name = "pettyCashPayments")
-    public Integer getPettyCashPayments() {
+    public float getPettyCashPayments() {
         return pettyCashPayments;
     }
 
-    public void setPettyCashPayments(Integer pettyCashPayments) {
+    public void setPettyCashPayments(float pettyCashPayments) {
         this.pettyCashPayments = pettyCashPayments;
     }
 
@@ -127,21 +110,21 @@ public class RunDateTableEntity {
 
     @Basic
     @Column(name = "vatableTotals")
-    public Integer getVatableTotals() {
+    public float getVatableTotals() {
         return vatableTotals;
     }
 
-    public void setVatableTotals(Integer vatableTotals) {
+    public void setVatableTotals(float vatableTotals) {
         this.vatableTotals = vatableTotals;
     }
 
     @Basic
     @Column(name = "unvatableTotals")
-    public Integer getUnvatableTotals() {
+    public float getUnvatableTotals() {
         return unvatableTotals;
     }
 
-    public void setUnvatableTotals(Integer unvatableTotals) {
+    public void setUnvatableTotals(float unvatableTotals) {
         this.unvatableTotals = unvatableTotals;
     }
 
@@ -157,57 +140,12 @@ public class RunDateTableEntity {
 
     @Basic
     @Column(name = "profits")
-    public Integer getProfits() {
+    public float getProfits() {
         return profits;
     }
 
-    public void setProfits(Integer profits) {
+    public void setProfits(float profits) {
         this.profits = profits;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RunDateTableEntity that = (RunDateTableEntity) o;
-
-        if (runDateId != null ? !runDateId.equals(that.runDateId) : that.runDateId != null) return false;
-        if (runDate != null ? !runDate.equals(that.runDate) : that.runDate != null) return false;
-        if (sales != null ? !sales.equals(that.sales) : that.sales != null) return false;
-        if (cashPayments != null ? !cashPayments.equals(that.cashPayments) : that.cashPayments != null) return false;
-        if (pettyCashPayments != null ? !pettyCashPayments.equals(that.pettyCashPayments) : that.pettyCashPayments != null)
-            return false;
-        if (activeStatus != null ? !activeStatus.equals(that.activeStatus) : that.activeStatus != null) return false;
-        if (manualCashEntry != null ? !manualCashEntry.equals(that.manualCashEntry) : that.manualCashEntry != null)
-            return false;
-        if (customerCount != null ? !customerCount.equals(that.customerCount) : that.customerCount != null)
-            return false;
-        if (vatableTotals != null ? !vatableTotals.equals(that.vatableTotals) : that.vatableTotals != null)
-            return false;
-        if (unvatableTotals != null ? !unvatableTotals.equals(that.unvatableTotals) : that.unvatableTotals != null)
-            return false;
-        if (zedClear != null ? !zedClear.equals(that.zedClear) : that.zedClear != null) return false;
-        if (profits != null ? !profits.equals(that.profits) : that.profits != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = runDateId != null ? runDateId.hashCode() : 0;
-        result = 31 * result + (runDate != null ? runDate.hashCode() : 0);
-        result = 31 * result + (sales != null ? sales.hashCode() : 0);
-        result = 31 * result + (cashPayments != null ? cashPayments.hashCode() : 0);
-        result = 31 * result + (pettyCashPayments != null ? pettyCashPayments.hashCode() : 0);
-        result = 31 * result + (activeStatus != null ? activeStatus.hashCode() : 0);
-        result = 31 * result + (manualCashEntry != null ? manualCashEntry.hashCode() : 0);
-        result = 31 * result + (customerCount != null ? customerCount.hashCode() : 0);
-        result = 31 * result + (vatableTotals != null ? vatableTotals.hashCode() : 0);
-        result = 31 * result + (unvatableTotals != null ? unvatableTotals.hashCode() : 0);
-        result = 31 * result + (zedClear != null ? zedClear.hashCode() : 0);
-        result = 31 * result + (profits != null ? profits.hashCode() : 0);
-        return result;
     }
 
     @Basic
@@ -219,4 +157,66 @@ public class RunDateTableEntity {
     public void setTillId(Integer tillId) {
         this.tillId = tillId;
     }
+
+    @Basic
+    @Column(name = "cash_sales")
+    public float getCash_sales() {
+        return cash_sales;
+    }
+
+    public void setCash_sales(float cash_sales) {
+        this.cash_sales = cash_sales;
+    }
+
+    @Basic
+    @Column(name = "credit_sales")
+    public float getCredit_sales() {
+        return credit_sales;
+    }
+
+    public void setCredit_sales(float credit_sales) {
+        this.credit_sales = credit_sales;
+    }
+
+    @Basic
+    @Column(name = "sales")
+    public float getSales() {
+        return sales;
+    }
+
+    public void setSales(float sales) {
+        this.sales = sales;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RunDateTableEntity that = (RunDateTableEntity) o;
+
+        if (runDateId != null ? !runDateId.equals(that.runDateId) : that.runDateId != null) return false;
+        if (runDate != null ? !runDate.equals(that.runDate) : that.runDate != null) return false;
+        if (activeStatus != null ? !activeStatus.equals(that.activeStatus) : that.activeStatus != null) return false;
+        if (manualCashEntry != null ? !manualCashEntry.equals(that.manualCashEntry) : that.manualCashEntry != null)
+            return false;
+        if (customerCount != null ? !customerCount.equals(that.customerCount) : that.customerCount != null)
+            return false;
+        if (zedClear != null ? !zedClear.equals(that.zedClear) : that.zedClear != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = runDateId != null ? runDateId.hashCode() : 0;
+        result = 31 * result + (runDate != null ? runDate.hashCode() : 0);
+        result = 31 * result + (activeStatus != null ? activeStatus.hashCode() : 0);
+        result = 31 * result + (manualCashEntry != null ? manualCashEntry.hashCode() : 0);
+        result = 31 * result + (customerCount != null ? customerCount.hashCode() : 0);
+        result = 31 * result + (zedClear != null ? zedClear.hashCode() : 0);
+        return result;
+    }
+
+
 }

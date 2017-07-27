@@ -5,24 +5,55 @@
       <artifact name="kinmvnpos:jar" />
     </artifacts-to-build>
   </component>
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java" line="319" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="d6c35995-60f7-4633-b035-dbd7229e57f8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar/eden.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar/edenpos.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar/pos1.sql" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountPostingsDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/CountryTaxRatesDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/OrgChartDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountPostingsDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCountryTaxRatesDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateOrgChartDAO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/CreateCashPaymentPurchase.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountsPostingsEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/CountryTaxRatesEntity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/OrgChartEntity.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/ChequePaymentEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/NegativeAdjustmentEntity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/AccountDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateAccountDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/AccountEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/ChequePaymentEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/NegativeAdjustmentEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/ReceiptEntity.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/SaleEntity.class" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/ReceiptEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeEntity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/SaleEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeItemsEntity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar/kinmvnpos.jar" afterPath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar/kinmvnpos.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar2/kinmvnpos.jar" afterPath="$PROJECT_DIR$/out/artifacts/kinmvnpos_jar2/kinmvnpos.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/CashPaymentDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/CashPaymentDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/PettyCashPaymentDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/PettyCashPaymentDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/ReceiptDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/ReceiptDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/RunDateDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/RunDateDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/SaleDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/SaleDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/StockDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/StockDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/StockEdenDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/StockEdenDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/SupplierDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/SupplierDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/UserDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/UserDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateReceiptDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateReceiptDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateRunDateDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateRunDateDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateSaleDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateSaleDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateStockDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateStockDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateStockEdenDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateStockEdenDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateSupplierDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateSupplierDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateUserDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateUserDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/dao/hibernate/HibernateUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$10.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$10.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$3.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$3.class" />
@@ -33,6 +64,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$8.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$9.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/FrontEndHome.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login$2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/Login.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$10.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$10.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$2.class" />
@@ -49,14 +83,35 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$8.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$9.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/PointOfSale.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/AutoFilter$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/AutoFilter$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/AutoFilter.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/AutoFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/CreateProdLogDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/CreateProdLogDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/HibernateCreateProdLogDAO.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/HibernateCreateProdLogDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/JavaTestKinyuaNgugiNLG100Index.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/JavaTestKinyuaNgugiNLG100Index.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/JavaTestKinyuaNgugiNLG100Index2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/JavaTestKinyuaNgugiNLG100Index2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MainPrint$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MainPrint$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MainPrint.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MainPrint.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MenuExample$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MenuExample$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MenuExample.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/MenuExample.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/Print.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/Print.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintJobWatcher$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintJobWatcher$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintJobWatcher.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintJobWatcher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintUIWindow$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintUIWindow$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintUIWindow.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/PrintUIWindow.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/Reader.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/dummies/Reader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/Constants.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/Constants.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$3.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/CreditList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/DateLabelFormatter.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/DateLabelFormatter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$2.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$3.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ProductSearch.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ResultSetTableModel.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/ResultSetTableModel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintReceipt$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintReceipt$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintReceipt.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintReceipt.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintZed$1.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintZed$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintZed.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrintZed.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrinterService.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/resources/print/PrinterService.class" />
@@ -76,26 +131,43 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday$3.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday$4.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/gui/today/ReceiptToday.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/ReceiptEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/ReceiptEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/CashPaymentEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/CashPaymentEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/CreateProdLogEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/CreateProdLogEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/PettyCashPaymentEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/PettyCashPaymentEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/RunDateTableEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/RunDateTableEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/StockEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/StockEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/StockedenEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/StockedenEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/SupplierEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/SupplierEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/SupplierLogEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/SupplierLogEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/kinpos/models/UserEntity.class" afterPath="$PROJECT_DIR$/target/classes/com/kinpos/models/UserEntity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/PettyCashPaymentDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/PettyCashPaymentDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/RunDateDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/RunDateDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kinmvnpos.iml" afterPath="$PROJECT_DIR$/kinmvnpos.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateRunDateDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateRunDateDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintReceipt.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintReceipt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/CashPaymentToday.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/CashPaymentToday.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/FullSaleListToday.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/FullSaleListToday.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/PettyCashPaymentToday.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/PettyCashPaymentToday.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/ReceiptEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/ReceiptEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java" afterPath="$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" afterPath="$PROJECT_DIR$/target/classes/hibernate.cfg.xml" />
     </list>
@@ -133,123 +205,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FrontEndHome.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java">
+      <file leaf-file-name="PointOfSale.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding>
-                <element signature="e#25750#25751#0" expanded="false" />
-                <element signature="e#25805#25806#0" expanded="false" />
-                <element signature="e#25933#25934#0" expanded="false" />
-                <element signature="e#25987#25988#0" expanded="false" />
-                <element signature="e#26112#26113#0" expanded="false" />
-                <element signature="e#26171#26172#0" expanded="false" />
-                <element signature="e#26335#26336#0" expanded="false" />
-                <element signature="e#26385#26386#0" expanded="false" />
-                <element signature="e#27254#27255#0" expanded="false" />
-                <element signature="e#27300#27301#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrinterService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3420">
-              <caret line="215" column="44" selection-start-line="215" selection-start-column="44" selection-end-line="215" selection-end-column="44" />
-              <folding>
-                <element signature="e#1276#1284#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PettyCashPaymentDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/PettyCashPaymentDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="14886">
+              <caret line="856" column="43" selection-start-line="856" selection-start-column="32" selection-end-line="856" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="false" />
+                <element signature="e#29168#29169#0" expanded="false" />
+                <element signature="e#29243#29244#0" expanded="false" />
+                <element signature="e#53312#53313#0" expanded="false" />
+                <element signature="e#53363#53364#0" expanded="false" />
+                <element signature="e#64506#64507#0" expanded="false" />
+                <element signature="e#64596#64597#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HibernatePettyCashPaymentDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.java">
+      <file leaf-file-name="CreateCashPaymentPurchase.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/CreateCashPaymentPurchase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CashPaymentDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HibernateCashPaymentDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HibernateRunDateDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateRunDateDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="39" selection-end-column="20" />
+            <state relative-caret-position="-223">
+              <caret line="104" column="31" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hibernate.cfg.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <file leaf-file-name="ProductSearch.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-              <folding />
+            <state relative-caret-position="54">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1115#1116#0" expanded="false" />
+                <element signature="e#1149#1150#0" expanded="false" />
+                <element signature="e#1203#1204#0" expanded="false" />
+                <element signature="e#1249#1250#0" expanded="false" />
+                <element signature="e#1287#1288#0" expanded="false" />
+                <element signature="e#1321#1322#0" expanded="false" />
+                <element signature="e#1375#1376#0" expanded="false" />
+                <element signature="e#1421#1422#0" expanded="false" />
+                <element signature="e#1453#1454#0" expanded="false" />
+                <element signature="e#1481#1482#0" expanded="false" />
+                <element signature="e#1523#1524#0" expanded="false" />
+                <element signature="e#1557#1558#0" expanded="false" />
+                <element signature="e#3174#3186#0" expanded="false" />
+                <element signature="e#3389#4087#0" expanded="false" />
+                <element signature="e#4086#4087#0" expanded="false" />
+                <element signature="e#7453#7761#0" expanded="false" />
+                <element signature="e#7760#7761#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java">
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrintZed.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
-              <folding />
+            <state relative-caret-position="1602">
+              <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#935#943#0" expanded="false" />
+                <element signature="e#3886#4903#0" expanded="false" />
+                <element signature="e#4902#4903#0" expanded="false" />
+                <element signature="e#4948#5792#0" expanded="false" />
+                <element signature="e#5791#5792#0" expanded="false" />
+                <element signature="e#6966#6967#0" expanded="false" />
+                <element signature="e#6993#6994#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -274,57 +301,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Print.java" />
-        <option value="$PROJECT_DIR$/companies.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/NLG100Index2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/NLG100Index.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/JavaTestKinyuaNgugiNLG100Index2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintReceipt.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintMyReceipt.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/ChequePaymentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/CreateProdLogEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/NegativeAdjustmentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/StockedenEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierLogEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/SaleEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ResultSetTableModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateStockDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSupplierDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/RunDateDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateRunDateDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/ReceiptEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/PettyCashPaymentToday.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/FullSaleListToday.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/CashPaymentToday.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/PettyCashPaymentDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernatePettyCashPaymentDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeItemsEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/CountryTaxRatesDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCountryTaxRatesDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/CountryTaxRatesEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateOrgChartDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountPostingsDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountPostingsDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountsPostingsEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintReceipt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/OrgChartDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kinpos/gui/CreateCashPaymentPurchase.java" />
       </list>
     </option>
   </component>
@@ -362,6 +389,28 @@
     <option name="width" value="1301" />
     <option name="height" value="744" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Since15</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
@@ -387,12 +436,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane />
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,7 +456,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="JPA.DatabaseSchemaImportDialog" value="02b4699d-44e5-4261-9751-77bfdbf2d88d" />
+    <property name="JPA.DatabaseSchemaImportDialog" value="04d6b05f-46be-44c2-a6d9-f0407f599a4f" />
     <property name="recentsLimit" value="5" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
@@ -426,19 +475,22 @@
       <recent name="com.kinpos.main" />
       <recent name="com.kinpos.dhis" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.kinpos.gui.resources" />
-      <recent name="com.kinpos.gui.dummies" />
-      <recent name="com.kinpos.gui.today" />
-      <recent name="com.kinpos.dao.hibernate" />
-      <recent name="com.kinpos.dao" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/com/kinpos/gui" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/com/kinpos/gui/today" />
       <recent name="$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.kinpos.gui" />
+      <recent name="com.kinpos.dao.hibernate" />
+      <recent name="com.kinpos.dao" />
+      <recent name="com.kinpos.gui.resources" />
+      <recent name="com.kinpos.gui.dummies" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.kinpos.models" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Login">
@@ -1229,12 +1281,21 @@
       <workItem from="1489736648985" duration="2475000" />
       <workItem from="1490619598922" duration="1894000" />
       <workItem from="1490694156529" duration="13476000" />
-      <workItem from="1492003653895" duration="13000" />
+      <workItem from="1492003653895" duration="762000" />
+      <workItem from="1492151779333" duration="183000" />
+      <workItem from="1493547076199" duration="21000" />
+      <workItem from="1493798925257" duration="149000" />
+      <workItem from="1493799562991" duration="2226000" />
+      <workItem from="1494400585364" duration="5000" />
+      <workItem from="1494400917436" duration="11000" />
+      <workItem from="1494921259303" duration="19030000" />
+      <workItem from="1496839205284" duration="6059000" />
+      <workItem from="1501134802182" duration="1374000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="682110000" />
+    <option name="totallyTimeSpent" value="711917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
@@ -1251,13 +1312,13 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32253087" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27929902" sideWeight="0.6848485" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3028169" sideWeight="0.69154227" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30358565" sideWeight="0.3151515" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30358565" sideWeight="0.3084577" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3195219" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14581673" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24893071" sideWeight="0.43020594" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1266,12 +1327,12 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24893071" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561728" sideWeight="0.48331907" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42901236" sideWeight="0.45594525" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2654321" sideWeight="0.45594525" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37962964" sideWeight="0.45338646" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3425926" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32853982" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271605" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1332,18 +1393,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java</url>
-          <line>64</line>
+          <line>63</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java</url>
-          <line>408</line>
+          <line>238</line>
           <properties />
-          <option name="timeStamp" value="31" />
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java</url>
+          <line>98</line>
+          <properties />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="32" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1352,396 +1419,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/ChequePaymentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/CreateProdLogEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/NegativeAdjustmentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/StockedenEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierLogEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ResultSetTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2268">
-          <caret line="130" column="0" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.purchase">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.account">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.cashPayment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.pettyCashPayment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/SaleEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateStockDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateStockEdenDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="96" column="23" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="15" column="78" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSupplierDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="14" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="30" column="46" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="218" column="34" selection-start-line="218" selection-start-column="34" selection-end-line="218" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/RunDateDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="78" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.runDateTable">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/ReceiptEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="623" column="0" selection-start-line="623" selection-start-column="0" selection-end-line="623" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="48" column="43" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/FullSaleListToday.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="58" column="58" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/PettyCashPaymentToday.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="41" column="74" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="95" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/CashPaymentToday.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.sale">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="dbDummy://dbtable:/c3e7ff8d/cbf0313e-ea33-4db8-acfb-23e9d006dd7f/pos.receipt">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateRunDateDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="39" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3420">
-          <caret line="215" column="44" selection-start-line="215" selection-start-column="44" selection-end-line="215" selection-end-column="44" />
-          <folding>
-            <element signature="e#1276#1284#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#25750#25751#0" expanded="false" />
-            <element signature="e#25805#25806#0" expanded="false" />
-            <element signature="e#25933#25934#0" expanded="false" />
-            <element signature="e#25987#25988#0" expanded="false" />
-            <element signature="e#26112#26113#0" expanded="false" />
-            <element signature="e#26171#26172#0" expanded="false" />
-            <element signature="e#26335#26336#0" expanded="false" />
-            <element signature="e#26385#26386#0" expanded="false" />
-            <element signature="e#27254#27255#0" expanded="false" />
-            <element signature="e#27300#27301#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/PettyCashPaymentDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1749,33 +1430,433 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCashPaymentDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
-          <folding />
+        <state relative-caret-position="486">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/04d6b05f-46be-44c2-a6d9-f0407f599a4f/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountEntity.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountDAO.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/PettyCashPaymentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1174">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/StockedenEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/SupplierEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+          <folding>
+            <element signature="e#1701#1702#0" expanded="false" />
+            <element signature="e#1739#1740#0" expanded="false" />
+            <element signature="e#1798#1799#0" expanded="false" />
+            <element signature="e#1852#1853#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/SaleDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/ReceiptDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.payment_methods">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/RunDateTableEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="852">
+          <caret line="212" column="74" selection-start-line="212" selection-start-column="74" selection-end-line="212" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateSaleDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="89" column="5" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/IncomeItemsEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/CountryTaxRates.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/CashPaymentEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="16" column="27" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/CountryTaxRatesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/CountryTaxRatesEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.accounts_postings">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateCountryTaxRatesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateReceiptDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="59" column="4" selection-start-line="59" selection-start-column="4" selection-end-line="67" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/AccountsPostingsEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="140" column="78" selection-start-line="140" selection-start-column="78" selection-end-line="140" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.org_chart">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintReceipt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="98" column="14" selection-start-line="98" selection-start-column="12" selection-end-line="103" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/AccountPostingsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/CashPaymentDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/OrgChartDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateOrgChartDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrintZed.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="42" column="57" selection-start-line="42" selection-start-column="57" selection-end-line="42" selection-end-column="57" />
+        <state relative-caret-position="-1260">
+          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.runDateTable">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/UserEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateUserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.user">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/today/ReceiptToday.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/FrontEndHome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#11506#11514#0" expanded="false" />
+            <element signature="e#11604#11613#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/CreditList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2890#2902#0" expanded="false" />
+            <element signature="e#3143#5421#0" expanded="false" />
+            <element signature="e#5420#5421#0" expanded="false" />
+            <element signature="e#8804#9112#0" expanded="false" />
+            <element signature="e#9111#9112#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/models/StockEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="130" column="56" selection-start-line="130" selection-start-column="56" selection-end-line="130" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/dummies/Reader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1440">
+          <caret line="86" column="22" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/print/PrinterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="52" column="4" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.country_tax_rates">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c3e7ff8d/04d6b05f-46be-44c2-a6d9-f0407f599a4f/pos2.stock">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/dao/hibernate/HibernateAccountPostingsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/PointOfSale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14886">
+          <caret line="856" column="43" selection-start-line="856" selection-start-column="32" selection-end-line="856" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#29168#29169#0" expanded="false" />
+            <element signature="e#29243#29244#0" expanded="false" />
+            <element signature="e#53312#53313#0" expanded="false" />
+            <element signature="e#53363#53364#0" expanded="false" />
+            <element signature="e#64506#64507#0" expanded="false" />
+            <element signature="e#64596#64597#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/CreateCashPaymentPurchase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-223">
+          <caret line="104" column="31" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/resources/ProductSearch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1115#1116#0" expanded="false" />
+            <element signature="e#1149#1150#0" expanded="false" />
+            <element signature="e#1203#1204#0" expanded="false" />
+            <element signature="e#1249#1250#0" expanded="false" />
+            <element signature="e#1287#1288#0" expanded="false" />
+            <element signature="e#1321#1322#0" expanded="false" />
+            <element signature="e#1375#1376#0" expanded="false" />
+            <element signature="e#1421#1422#0" expanded="false" />
+            <element signature="e#1453#1454#0" expanded="false" />
+            <element signature="e#1481#1482#0" expanded="false" />
+            <element signature="e#1523#1524#0" expanded="false" />
+            <element signature="e#1557#1558#0" expanded="false" />
+            <element signature="e#3174#3186#0" expanded="false" />
+            <element signature="e#3389#4087#0" expanded="false" />
+            <element signature="e#4086#4087#0" expanded="false" />
+            <element signature="e#7453#7761#0" expanded="false" />
+            <element signature="e#7760#7761#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kinpos/gui/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1602">
+          <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#935#943#0" expanded="false" />
+            <element signature="e#3886#4903#0" expanded="false" />
+            <element signature="e#4902#4903#0" expanded="false" />
+            <element signature="e#4948#5792#0" expanded="false" />
+            <element signature="e#5791#5792#0" expanded="false" />
+            <element signature="e#6966#6967#0" expanded="false" />
+            <element signature="e#6993#6994#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
